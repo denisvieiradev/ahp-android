@@ -8,15 +8,21 @@ import com.decisionsupport.utils.ActivityUtils;
 
 public class SelectAssistMethodActivity extends AppCompatActivity {
 
+    private SelectAssistMethodFragment mSelectAssistMethodFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.select_assist_method_act);
 
-        SelectAssistMethodFragment selectAssistMethodFragment = (SelectAssistMethodFragment) getSupportFragmentManager().findFragmentById(R.id.dashboard_content_frame);
+        mSelectAssistMethodFragment = SelectAssistMethodFragment.newInstance();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.dashboard_content_frame, mSelectAssistMethodFragment).commit();
 
-        if (selectAssistMethodFragment == null) {
-            selectAssistMethodFragment = SelectAssistMethodFragment.newInstance();
-            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), selectAssistMethodFragment, R.id.dashboard_content_frame);
+        if (mSelectAssistMethodFragment == null){
+            mSelectAssistMethodFragment = SelectAssistMethodFragment.newInstance();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.dashboard_content_frame, mSelectAssistMethodFragment).commit();
         }
     }
 }

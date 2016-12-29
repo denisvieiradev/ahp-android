@@ -49,7 +49,7 @@ public class SelectAssistMethodAdapter extends RecyclerView.Adapter<SelectAssist
     public void onBindViewHolder(ItemViewHolder holder, int position) {
         final AssistMethod assistMethod = mAssistMethods.get(position);
         holder.binding.setAssistmethod(assistMethod);
-        holder.binding.assistMethodDescription.setOnClickListener(new View.OnClickListener() {
+        holder.binding.assistMethodContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(assistMethod.getMethodId() == AssistMethodsEnum.AHP.getValue())

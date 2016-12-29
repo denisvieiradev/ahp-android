@@ -5,11 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
-import static android.databinding.repacked.google.common.base.Preconditions.checkNotNull;
-
-/**
- * Created by rachidcalazans on 8/3/16.
- */
+import static com.google.common.base.Preconditions.checkNotNull;
 
 public class ActivityUtils {
 

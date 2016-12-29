@@ -2,7 +2,8 @@ package com.decisionsupport.SelectAssistMethod;
 
 import android.support.annotation.NonNull;
 
-import static android.databinding.repacked.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkNotNull;
+
 
 /**
  * Created by denisvieira on 28/12/16.

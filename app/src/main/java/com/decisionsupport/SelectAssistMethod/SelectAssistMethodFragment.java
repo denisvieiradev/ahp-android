@@ -5,18 +5,21 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.decisionsupport.R;
 import com.decisionsupport.databinding.SelectAssistMethodFragBinding;
 import com.decisionsupport.domain.entity.AssistMethod;
+import com.decisionsupport.domain.enums.AssistMethodsEnum;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.databinding.repacked.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Created by denisvieira on 28/12/16.
@@ -47,7 +50,19 @@ public class SelectAssistMethodFragment extends Fragment implements SelectAssist
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater,R.layout.select_assist_method_frag,container,false);
 
+        AssistMethod assisMethodAHP = new AssistMethod("AHP","Description AHP", AssistMethodsEnum.AHP.getValue());
+        AssistMethod assisMethodProgression = new AssistMethod("PROGRESSION","Description PROGRESSION", AssistMethodsEnum.PROGRESSION.getValue());
+        AssistMethod assisMethodRegression = new AssistMethod("REGRESSION","Description REGRESSION", AssistMethodsEnum.REGRESSION.getValue());
+
+        mAssistMethods.add(assisMethodAHP);
+        mAssistMethods.add(assisMethodProgression);
+        mAssistMethods.add(assisMethodRegression);
+
         mSelectAssistMethodAdapter = new SelectAssistMethodAdapter(getContext(),mAssistMethods, this);
+
+        RecyclerView.LayoutManager layout = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        mBinding.assistMethods.setLayoutManager(layout);
+        mBinding.assistMethods.setNestedScrollingEnabled(false);
         mBinding.assistMethods.setAdapter(mSelectAssistMethodAdapter);
 
         return mBinding.getRoot();
@@ -55,21 +70,19 @@ public class SelectAssistMethodFragment extends Fragment implements SelectAssist
 
     @Override
     public void goToAHP() {
-
+        Toast.makeText(getContext(), "GO TO AHP METHOD", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void goToRegression() {
-
+        Toast.makeText(getContext(), "GO TO AHP REGRESSION METHOD", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void goToProgression() {
-
+        Toast.makeText(getContext(), "GO TO PROGRESSION METHOD", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void setPresenter(@NonNull SelectAssistMethodContract.Presenter presenter) {
-        mPresenter = checkNotNull(presenter);
-    }
+    public void setPresenter(@NonNull SelectAssistMethodContract.Presenter presenter) {}
 }
