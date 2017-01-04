@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="assistmethod"
@@ -8,29 +9,63 @@
 
     </data>
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:id="@+id/assist_method_container"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="20dp">
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:foreground="?attr/selectableItemBackground"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        card_view:cardCornerRadius="3dp">
 
-        <TextView
-            android:id="@+id/assist_method_title"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            tools:text="Title"
-            android:text="@{assistmethod.title}"/>
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/assist_method_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            tools:text="Description"
-            android:text="@{assistmethod.description}"/>
+            <TextView
+                android:id="@+id/assist_method_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:layout_gravity="bottom"
+                android:gravity="center_vertical"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/md_white_1000"
+                android:padding="@dimen/activity_horizontal_margin"
+                tools:text="Title"
+                android:text="@{assistmethod.title}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/assist_method_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:layout_gravity="bottom"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:textSize="16sp"
+                android:textColor="@color/md_grey_800"
+                tools:text="Cras fringilla feugiat tellus, eu consequat mauris euismod id. Sed luctus ut urna ac dignissim. Vivamus eget nibh arcu. Vestibulum suscipit massa ipsum, a lacinia ex mattis ut. Nulla quis hendrerit enim, eget ultrices massa. Nunc placerat imperdiet faucibus. Ut mauris neque, suscipit et aliquam eget, euismod at nisl. Etiam sit amet odio justo. Duis vel diam lorem."
+                android:text="@{assistmethod.description}"/>
+
+                <Button
+                    android:id="@+id/assist_method_read_more_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:textColor="?attr/colorPrimary"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:text="@string/select_assist_method_item_button_read_more" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
 </layout>
