@@ -15,10 +15,6 @@ public class SelectAssistMethodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_assist_method_act);
 
-        mSelectAssistMethodFragment = SelectAssistMethodFragment.newInstance();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.dashboard_content_frame, mSelectAssistMethodFragment).commit();
-
         if (mSelectAssistMethodFragment == null){
             mSelectAssistMethodFragment = SelectAssistMethodFragment.newInstance();
             getSupportFragmentManager().beginTransaction()
