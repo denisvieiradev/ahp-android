@@ -1,5 +1,6 @@
 package com.decisionsupport.SelectAssistMethod;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.decisionsupport.AhpMethod.AhpDashboard.AhpDashboardActivity;
 import com.decisionsupport.R;
 import com.decisionsupport.databinding.SelectAssistMethodFragBinding;
 import com.decisionsupport.domain.entity.AssistMethod;
@@ -70,7 +72,8 @@ public class SelectAssistMethodFragment extends Fragment implements SelectAssist
 
     @Override
     public void goToAHP() {
-        Toast.makeText(getContext(), "GO TO AHP METHOD", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getContext(), AhpDashboardActivity.class);
+        startActivity(intent);
     }
 
     @Override

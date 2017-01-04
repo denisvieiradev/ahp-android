@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-
+    <color name="colorPrimary">#4d4d4c</color>
+    <color name="colorPrimaryDark">#424242</color>
+    <color name="colorAccent">#ff9800</color>
+    <color name="decisionsupport_color">#4d4d4c</color>
 
     <!-- google's material design colours from
-http://www.google.com/design/spec/style/color.html#color-ui-color-palette -->
+http://www.google.com/design/spec/style/color.html#color-ui-color-palet te -->
 
     <!--reds-->
     <color name="md_red_50">#FFEBEE</color>
