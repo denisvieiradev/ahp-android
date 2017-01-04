@@ -50,7 +50,7 @@ public class SelectAssistMethodFragment extends Fragment implements SelectAssist
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater,R.layout.select_assist_method_frag,container,false);
 
-        AssistMethod assisMethodAHP = new AssistMethod("AHP","Description AHP", AssistMethodsEnum.AHP.getValue());
+        AssistMethod assisMethodAHP = new AssistMethod("AHP",getResources().getString(R.string.select_assist_method_ahp_description), AssistMethodsEnum.AHP.getValue());
         AssistMethod assisMethodProgression = new AssistMethod("PROGRESSION","Description PROGRESSION", AssistMethodsEnum.PROGRESSION.getValue());
         AssistMethod assisMethodRegression = new AssistMethod("REGRESSION","Description REGRESSION", AssistMethodsEnum.REGRESSION.getValue());
 

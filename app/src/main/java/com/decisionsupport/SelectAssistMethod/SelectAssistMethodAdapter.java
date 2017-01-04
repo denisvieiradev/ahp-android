@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.decisionsupport.R;
 import com.decisionsupport.databinding.SelectAssistMethodRecycleItemBinding;
@@ -49,6 +50,12 @@ public class SelectAssistMethodAdapter extends RecyclerView.Adapter<SelectAssist
     public void onBindViewHolder(ItemViewHolder holder, int position) {
         final AssistMethod assistMethod = mAssistMethods.get(position);
         holder.binding.setAssistmethod(assistMethod);
+        holder.binding.assistMethodReadMoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "Abrir Colapse com o resto do texto ou ir para outra tela", Toast.LENGTH_SHORT).show();
+            }
+        });
         holder.binding.assistMethodContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

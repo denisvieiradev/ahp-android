@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Suporte a Decisões</string>
+
+    <string name="select_assist_method_item_button_read_more">Leia Mais</string>
+
+    <string name="select_assist_method_ahp_description">A programação multicritério por meio do Analytic Hierarchy Process é uma técnica estruturada para tomada de decisão em ambientes complexos em que diversas variáveis ou critérios são considerados para a priorização e seleção de alternativas ou projetos.</string>
+
+</resources>
