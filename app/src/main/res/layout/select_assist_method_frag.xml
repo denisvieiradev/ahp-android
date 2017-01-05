@@ -8,6 +8,29 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/ahp_dashboard_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:theme="@style/AppTheme.ActionBarTheme">
+
+            <TextView
+                android:text="@string/select_assist_method_toolbar_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="18sp"/>
+
+        </android.support.v7.widget.Toolbar>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@drawable/toolbar_dropshadow"/>
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/assist_methods"
             android:layout_width="match_parent"
