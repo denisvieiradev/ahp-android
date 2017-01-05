@@ -4,12 +4,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_decision_support_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".SelectAssistMethod.SelectAssistMethodActivity">
+        <activity android:name=".home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,11 +17,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".AhpMethod.AhpDashboard.AhpDashboardActivity">
+        <activity android:name=".selectassistmethod.SelectAssistMethodActivity" />
 
-        </activity>
+        <activity android:name=".ahpmethod.AhpDashboard.AhpDashboardActivity" />
 
-        <activity android:name=".AhpMethod.AhpSteps.AhpStepperActivity"/>
+        <activity android:name=".ahpmethod.AhpSteps.AhpStepperActivity"/>
 
     </application>
 

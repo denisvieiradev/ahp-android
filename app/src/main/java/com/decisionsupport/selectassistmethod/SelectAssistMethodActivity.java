@@ -1,10 +1,9 @@
-package com.decisionsupport.SelectAssistMethod;
+package com.decisionsupport.selectassistmethod;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.decisionsupport.R;
-import com.decisionsupport.utils.ActivityUtils;
 
 public class SelectAssistMethodActivity extends AppCompatActivity {
 

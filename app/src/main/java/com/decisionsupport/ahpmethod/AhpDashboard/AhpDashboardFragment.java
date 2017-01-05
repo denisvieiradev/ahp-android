@@ -1,4 +1,4 @@
-package com.decisionsupport.AhpMethod.AhpDashboard;
+package com.decisionsupport.ahpmethod.AhpDashboard;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.decisionsupport.AhpMethod.AhpSteps.AhpStepperActivity;
+import com.decisionsupport.ahpmethod.AhpSteps.AhpStepperActivity;
 import com.decisionsupport.R;
 import com.decisionsupport.databinding.AhpMultistepsFragBinding;
 

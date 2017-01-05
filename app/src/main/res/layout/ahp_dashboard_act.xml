@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AhpMethod.AhpDashboard.AhpDashboardActivity">
+    tools:context=".ahpmethod.AhpDashboard.AhpDashboardActivity">
 
     <FrameLayout
         android:id="@+id/ahp_dashboard_content_frame"

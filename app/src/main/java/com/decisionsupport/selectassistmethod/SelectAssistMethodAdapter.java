@@ -1,4 +1,4 @@
-package com.decisionsupport.SelectAssistMethod;
+package com.decisionsupport.selectassistmethod;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
