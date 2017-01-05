@@ -5,4 +5,9 @@
 
     <string name="select_assist_method_ahp_description">Multicriteria programming through the Analytic Hierarchy Process is a structured technique for decision making in complex environments in which several variables or criteria are considered for the prioritization and selection of alternatives or projects.</string>
 
+    <string name="home_start_text_button">START</string>
+    <string name="home_app_info_phrase_1">See now the best decision to make.</string>
+    <string name="home_app_info_phrase_2">Justify any choice you make.</string>
+    <string name="home_app_info_phrase_3">Make the best decision ever, start now.</string>
+
 </resources>

@@ -43,9 +43,9 @@ public class HomeFragment extends Fragment implements HomeContract.View{
         setRetainInstance(true);
 
         frases = new ArrayList<>();
-        frases.add("Veja agora a melhor decisão a se tomar .");
-        frases.add("Justifique qualquer escolha sua .");
-        frases.add("Tome a melhor decisão sempre, inicie já o " + getResources().getString(R.string.app_name) + ".");
+        frases.add(getResources().getString(R.string.home_app_info_phrase_1));
+        frases.add(getResources().getString(R.string.home_app_info_phrase_2));
+        frases.add(getResources().getString(R.string.home_app_info_phrase_3));
 
         mPagerAdapter = new CustomSwipeAdapter(getContext(),frases);
     }
@@ -80,7 +80,7 @@ public class HomeFragment extends Fragment implements HomeContract.View{
         });
 
         mBinding.homeAppInfoPager.setCurrentItem(0);
-        mPagerAdapter.setTimer(mBinding.homeAppInfoPager,4);
+        mPagerAdapter.setTimer(mBinding.homeAppInfoPager,5);
 
         return mBinding.getRoot();
     }

@@ -71,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
-                android:text="INICIAR"
+                android:text="@string/home_start_text_button"
                 android:paddingEnd="50dp"
                 android:paddingStart="50dp"
                 android:paddingTop="20dp"
