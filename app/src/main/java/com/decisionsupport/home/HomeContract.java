@@ -1,4 +1,4 @@
-package com.decisionsupport.AhpMethod.AhpDashboard;
+package com.decisionsupport.home;
 
 import com.decisionsupport.BasePresenter;
 import com.decisionsupport.BaseView;
@@ -6,10 +6,9 @@ import com.decisionsupport.BaseView;
 /**
  * Created by denisvieira on 04/01/17.
  */
-public interface AhpDashboardContract {
-
+public interface HomeContract {
     interface View extends BaseView<Presenter> {
-        void startNew();
+        void goToDashboard();
     }
 
     interface Presenter extends BasePresenter {}

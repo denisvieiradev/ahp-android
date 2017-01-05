@@ -1,4 +1,4 @@
-package com.decisionsupport.AhpMethod.AhpSteps;
+package com.decisionsupport.ahpmethod.AhpSteps;
 
 import android.app.AlertDialog;
 import android.content.Intent;

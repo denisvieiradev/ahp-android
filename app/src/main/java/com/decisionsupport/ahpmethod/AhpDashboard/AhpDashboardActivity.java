@@ -1,4 +1,4 @@
-package com.decisionsupport.AhpMethod.AhpDashboard;
+package com.decisionsupport.ahpmethod.AhpDashboard;
 
 import android.content.Intent;
 import android.os.Bundle;

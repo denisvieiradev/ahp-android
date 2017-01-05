@@ -1,4 +1,4 @@
-package com.decisionsupport.SelectAssistMethod;
+package com.decisionsupport.selectassistmethod;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.decisionsupport.AhpMethod.AhpDashboard.AhpDashboardActivity;
+import com.decisionsupport.ahpmethod.AhpDashboard.AhpDashboardActivity;
 import com.decisionsupport.R;
 import com.decisionsupport.databinding.SelectAssistMethodFragBinding;
 import com.decisionsupport.domain.entity.AssistMethod;

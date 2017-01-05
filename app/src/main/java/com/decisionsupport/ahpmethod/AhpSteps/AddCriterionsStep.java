@@ -1,4 +1,4 @@
-package com.decisionsupport.AhpMethod.AhpSteps;
+package com.decisionsupport.ahpmethod.AhpSteps;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.decisionsupport.SelectAssistMethod;
+package com.decisionsupport.selectassistmethod;
 
 import com.decisionsupport.BasePresenter;
 import com.decisionsupport.BaseView;

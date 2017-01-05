@@ -1,4 +1,4 @@
-package com.decisionsupport.AhpMethod.AhpSteps;
+package com.decisionsupport.ahpmethod.AhpSteps;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import com.decisionsupport.R;
 import com.decisionsupport.databinding.AhpMethodAddAlternativesStepBinding;
-import com.decisionsupport.databinding.AhpMultistepsFragBinding;
 import com.github.fcannizzaro.materialstepper.AbstractStep;
 
 /**

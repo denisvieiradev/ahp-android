@@ -1,4 +1,4 @@
-package com.decisionsupport.SelectAssistMethod;
+package com.decisionsupport.selectassistmethod;
 
 import android.support.annotation.NonNull;
 
