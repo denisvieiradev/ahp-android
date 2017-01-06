@@ -1,5 +1,6 @@
 package com.decisionsupport.home;
 
+import android.app.ActivityOptions;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -57,7 +58,7 @@ public class HomeFragment extends Fragment implements HomeContract.View{
 
         mBinding.startDecisionsupportButton.setOnClickListener(view ->{
             Intent intent = new Intent(getContext(), SelectAssistMethodActivity.class);
-            startActivity(intent);
+            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
         });
 
         mBinding.homeAppInfoPager.setAdapter(mPagerAdapter);
