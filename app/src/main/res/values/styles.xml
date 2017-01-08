@@ -10,7 +10,7 @@
 
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowEnterTransition">@transition/enter_from_right</item>
-        <item name="android:windowExitTransition">@transition/explode</item>
+        <item name="android:windowExitTransition">@transition/slide_and_fade_animation</item>
     </style>
 
     <style name="myToolbarNavigationButtonStyle" parent="@style/Widget.AppCompat.Toolbar.Button.Navigation">

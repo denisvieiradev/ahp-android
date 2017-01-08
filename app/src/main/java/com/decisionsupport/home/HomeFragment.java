@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.transition.Fade;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,8 @@ public class HomeFragment extends Fragment implements HomeContract.View{
             startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
         });
 
+        setupWindowAnimations();
+
         mBinding.homeAppInfoPager.setAdapter(mPagerAdapter);
         mBinding.homePagerRadioGroup.check(mBinding.homePagerRadioGroup.getChildAt(0).getId());
         mBinding.homeAppInfoPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -84,6 +87,12 @@ public class HomeFragment extends Fragment implements HomeContract.View{
         mPagerAdapter.setTimer(mBinding.homeAppInfoPager,5);
 
         return mBinding.getRoot();
+    }
+
+    private void setupWindowAnimations() {
+        Fade fade = new Fade();
+        fade.setDuration(300);
+        getActivity().getWindow().setEnterTransition(fade);
     }
 
     @Override
