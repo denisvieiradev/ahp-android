@@ -11,8 +11,6 @@ public class AssistMethod implements Serializable {
      private String mDescription;
      private int mMethodId;
 
-     public AssistMethod() {}
-
      public AssistMethod(String title, String description, int methodId) {
           this.mTitle      = title;
           this.mDescription = description;

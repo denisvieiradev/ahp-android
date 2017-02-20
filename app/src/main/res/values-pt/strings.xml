@@ -12,4 +12,10 @@
     <string name="home_app_info_phrase_2">Justifique qualquer escolha sua .</string>
     <string name="home_app_info_phrase_3">Tome a melhor decisão sempre, inicie já .</string>
 
+    <string name="select_assist_method_toolbar_text">Selecione um método</string>
+
+    <string name="ahp_dashboard_ahp_title">Analytic Hierarchy Process</string>
+
+
+
 </resources>

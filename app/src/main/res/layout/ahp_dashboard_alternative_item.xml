@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/apk/res/android"
+    >
+
+    <data>
+        <variable
+            name="alternative"
+            type="com.decisionsupport.domain.entity.Alternative"/>
+    </data>
+
+    <com.daimajia.swipe.SwipeLayout
+        android:id="@+id/ahp_dashboard_alternative_item_swipe_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
+        <LinearLayout
+            android:id="@+id/ahp_dashboard_remove_alternative_linear_layout"
+            android:tag="Bottom2"
+            android:background="@color/md_red_A700"
+            android:layout_width="70dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+            <ImageView
+                android:id="@+id/trash"
+                android:src="@drawable/ic_delete_trash"
+                android:layout_gravity="center"
+                android:layout_width="22dp"
+                android:layout_height="22dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+            <TextView
+                android:tag="Hover"
+                tools:text="If winter comes"
+                android:text="@{alternative.title}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </com.daimajia.swipe.SwipeLayout>
+
+</layout>
