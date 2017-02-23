@@ -31,11 +31,27 @@ public class ComparisonItem {
     }
 
     public float getFirstAlternativeValue() {
+        if(mFirstAlternativeStringValue.contains("/"))
+            return getDivisionResult(mFirstAlternativeStringValue);
+
         return Float.valueOf(mFirstAlternativeStringValue);
     }
 
     public float getSecondAlternativeValue() {
+        if(mSecondAlternativeStringValue.contains("/"))
+            return getDivisionResult(mSecondAlternativeStringValue);
+
         return Float.valueOf(mSecondAlternativeStringValue);
+    }
+
+    public float getDivisionResult(String stringValue){
+        String[] parts = stringValue.split("/");
+        Integer part1 = Integer.valueOf(parts[0]);
+        Integer part2 = Integer.valueOf(parts[1]);
+
+        float result = (float) part1/part2;
+
+        return result;
     }
 
     public String getFirstAlternativeStringValue() {

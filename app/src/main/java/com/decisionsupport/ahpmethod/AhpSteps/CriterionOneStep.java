@@ -24,6 +24,7 @@ import com.decisionsupport.domain.enums.ComparisonDefinitionEnum;
 import com.github.fcannizzaro.materialstepper.AbstractStep;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static android.content.Intent.getIntent;
@@ -36,7 +37,7 @@ public class CriterionOneStep extends AbstractStep {
 
     AhpMethodCriterionOneStepBinding mBinding;
     private AhpComparionItemAdapter mAhpComparionItemAdapter;
-    private float[][] criterion1matrix;
+    private float[][] criterionMatrix;
     private List<Alternative> mAlternatives;
     private Criterion mCriterion;
 
@@ -78,6 +79,25 @@ public class CriterionOneStep extends AbstractStep {
         return mBinding.getRoot();
     }
 
+    private void generateCriterionMatrice(){
+
+        List<ComparisonItem> comparisonItems = mAhpComparionItemAdapter.getComparisonItems();
+        ComparisonItem comparisonItem0 = comparisonItems.get(0);
+        ComparisonItem comparisonItem1 = comparisonItems.get(1);
+        ComparisonItem comparisonItem2 = comparisonItems.get(2);
+        ComparisonItem comparisonItem3 = comparisonItems.get(3);
+        ComparisonItem comparisonItem4 = comparisonItems.get(4);
+        ComparisonItem comparisonItem5 = comparisonItems.get(5);
+
+        float[][] matrix =
+                {{1, comparisonItem0.getSecondAlternativeValue(), comparisonItem1.getSecondAlternativeValue(), comparisonItem2.getSecondAlternativeValue()},
+                        {comparisonItem0.getFirstAlternativeValue(), 1, comparisonItem3.getSecondAlternativeValue(), comparisonItem4.getSecondAlternativeValue()},
+                        {comparisonItem1.getFirstAlternativeValue(), comparisonItem3.getFirstAlternativeValue(), 1, comparisonItem5.getSecondAlternativeValue()},
+                        {comparisonItem2.getFirstAlternativeValue(), comparisonItem4.getFirstAlternativeValue(), comparisonItem5.getFirstAlternativeValue(), 1}};
+
+        criterionMatrix = matrix;
+    }
+
     @Override
     public void onSaveInstanceState(Bundle state) {
         super.onSaveInstanceState(state);
@@ -99,9 +119,11 @@ public class CriterionOneStep extends AbstractStep {
 
     @Override
     public void onNext() {
-        mAhpComparionItemAdapter.getComparisonItems().get(0).getSecondAlternativeStringValue();
+        generateCriterionMatrice();
 
-        System.out.println("onNext : "+mAhpComparionItemAdapter.getComparisonItems().get(0).getFirstAlternativeStringValue()+" - "+mAhpComparionItemAdapter.getComparisonItems().get(0).getSecondAlternativeStringValue());
+        imprimeMatriz(criterionMatrix);
+
+        System.out.println("onNext ");
     }
 
     @Override
@@ -142,11 +164,11 @@ public class CriterionOneStep extends AbstractStep {
                     criterion1matrixNull[linha][coluna] =1/9;
             }
         }
-
-        criterion1matrix[0][0]=1;
-        criterion1matrix[1][1]=1;
-        criterion1matrix[2][2]=1;
-        criterion1matrix[3][3]=1;
+//
+//        criterion1matrix[0][0]=1;
+//        criterion1matrix[1][1]=1;
+//        criterion1matrix[2][2]=1;
+//        criterion1matrix[3][3]=1;
 
         return criterion1matrixNull;
     }
