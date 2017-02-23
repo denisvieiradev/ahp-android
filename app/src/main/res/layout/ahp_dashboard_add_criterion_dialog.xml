@@ -5,7 +5,7 @@
     <data>
         <variable
             name="handler"
-            type="com.decisionsupport.ahpmethod.AhpDashboard.AhpDashboardFragment"/>
+            type="com.decisionsupport.ahpmethod.ahpdashboard.AhpDashboardFragment"/>
     </data>
 
     <LinearLayout

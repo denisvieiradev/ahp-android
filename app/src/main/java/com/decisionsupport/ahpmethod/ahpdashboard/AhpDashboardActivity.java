@@ -1,4 +1,4 @@
-package com.decisionsupport.ahpmethod.AhpDashboard;
+package com.decisionsupport.ahpmethod.ahpdashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,20 +12,19 @@ import com.decisionsupport.R;
  */
 public class AhpDashboardActivity extends AppCompatActivity {
 
-    private AhpDashboardFragment mAhpMultiSteps;
+    private AhpDashboardFragment mAhpDashboardFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ahp_dashboard_act);
 
-        if (mAhpMultiSteps == null){
-            mAhpMultiSteps = AhpDashboardFragment.newInstance();
+        if (mAhpDashboardFragment == null){
+            mAhpDashboardFragment = AhpDashboardFragment.newInstance();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.ahp_dashboard_content_frame, mAhpMultiSteps).commit();
+                    .add(R.id.ahp_dashboard_content_frame, mAhpDashboardFragment).commit();
         }
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

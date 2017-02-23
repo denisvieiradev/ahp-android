@@ -1,10 +1,9 @@
-package com.decisionsupport.ahpmethod.AhpDashboard;
+package com.decisionsupport.ahpmethod.ahpdashboard;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
@@ -34,6 +33,10 @@ public class AhpDashboardCriterionAdapter extends RecyclerSwipeAdapter<AhpDashbo
         this.mCriterions = criterions;
         this.mContext = context;
         this.mAhpDashboardContract = ahpDashboardContract;
+    }
+
+    public List<Criterion> getCriterions(){
+        return mCriterions;
     }
 
     public void replaceData(List<Criterion> criterions) {

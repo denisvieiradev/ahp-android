@@ -11,5 +11,11 @@
     <string name="home_app_info_phrase_3">Make the best decision ever, start now.</string>
 
     <string name="ahp_dashboard_ahp_title">Analytic Hierarchy Process</string>
+    <string name="ahp_method_comparison_definitions_equal_importance">Igual Importância</string>
+    <string name="ahp_method_comparison_definitions_tweak_importance">Fraca Importância</string>
+    <string name="ahp_method_comparison_definitions_strong_importance">Forte Importância</string>
+    <string name="ahp_method_comparison_definitions_very_strong_importance">Muito Forte Importância</string>
+    <string name="ahp_method_comparison_definitions_absolute_importance">Absoluta Importância</string>
+    <string name="ahp_method_comparison_definitions_intermediary_values">Valores Intermediarios</string>
 
 </resources>

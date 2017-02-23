@@ -1,6 +1,4 @@
-package com.decisionsupport.ahpmethod.AhpDashboard;
-
-import android.view.View;
+package com.decisionsupport.ahpmethod.ahpdashboard;
 
 import com.decisionsupport.BasePresenter;
 import com.decisionsupport.BaseView;
@@ -11,7 +9,7 @@ import com.decisionsupport.BaseView;
 public interface AhpDashboardContract {
 
     interface View extends BaseView<Presenter> {
-        void startNew();
+        void startNew(android.view.View view);
         void addCriterion(android.view.View view);
         void addAlternative(android.view.View view);
         void openAddCriterionDialog(android.view.View view);

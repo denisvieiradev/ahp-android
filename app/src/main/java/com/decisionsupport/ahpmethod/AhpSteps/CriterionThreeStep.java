@@ -7,20 +7,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.decisionsupport.R;
-import com.decisionsupport.databinding.AhpMethodAddCriterionsStepBinding;
+import com.decisionsupport.databinding.AhpMethodCriterionOneStepBinding;
 import com.github.fcannizzaro.materialstepper.AbstractStep;
 
 /**
  * Created by denisvieira on 04/01/17.
  */
-public class AddCriterionsStep extends AbstractStep {
+public class CriterionThreeStep extends AbstractStep {
 
-    private AhpMethodAddCriterionsStepBinding mBinding;
+    private AhpMethodCriterionOneStepBinding mBinding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.ahp_method_add_criterions_step,container,false);
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.ahp_method_criterion_one_step,container,false);
 
         return mBinding.getRoot();
     }
