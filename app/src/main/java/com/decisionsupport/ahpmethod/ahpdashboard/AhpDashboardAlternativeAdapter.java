@@ -1,18 +1,15 @@
-package com.decisionsupport.ahpmethod.AhpDashboard;
+package com.decisionsupport.ahpmethod.ahpdashboard;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
 import com.decisionsupport.R;
 import com.decisionsupport.databinding.AhpDashboardAlternativeItemBinding;
 import com.decisionsupport.domain.entity.Alternative;
-import com.decisionsupport.domain.entity.Criterion;
 import com.decisionsupport.utils.GuidGenerator;
 
 import java.util.List;
@@ -36,6 +33,10 @@ public class AhpDashboardAlternativeAdapter extends RecyclerSwipeAdapter<AhpDash
         this.mAlternatives = alternatives;
         this.mContext = context;
         this.mAhpDashboardContract = ahpDashboardContract;
+    }
+
+    public List<Alternative> getAlternatives(){
+        return mAlternatives;
     }
 
     public void replaceData(List<Alternative> itemsMethod) {

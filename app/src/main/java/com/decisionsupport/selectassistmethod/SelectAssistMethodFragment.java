@@ -13,8 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.decisionsupport.ahpmethod.AhpDashboard.AhpDashboardActivity;
 import com.decisionsupport.R;
+import com.decisionsupport.ahpmethod.ahpdashboard.AhpDashboardActivity;
 import com.decisionsupport.databinding.SelectAssistMethodFragBinding;
 import com.decisionsupport.domain.entity.AssistMethod;
 import com.decisionsupport.domain.enums.AssistMethodsEnum;
@@ -53,12 +53,8 @@ public class SelectAssistMethodFragment extends Fragment implements SelectAssist
         mBinding = DataBindingUtil.inflate(inflater,R.layout.select_assist_method_frag,container,false);
 
         AssistMethod assisMethodAHP = new AssistMethod("AHP",getResources().getString(R.string.select_assist_method_ahp_description), AssistMethodsEnum.AHP.getValue());
-        AssistMethod assisMethodProgression = new AssistMethod("PROGRESSION","Description PROGRESSION", AssistMethodsEnum.PROGRESSION.getValue());
-        AssistMethod assisMethodRegression = new AssistMethod("REGRESSION","Description REGRESSION", AssistMethodsEnum.REGRESSION.getValue());
 
         mAssistMethods.add(assisMethodAHP);
-        mAssistMethods.add(assisMethodProgression);
-        mAssistMethods.add(assisMethodRegression);
 
         mSelectAssistMethodAdapter = new SelectAssistMethodAdapter(getContext(),mAssistMethods, this);
 
@@ -78,7 +74,7 @@ public class SelectAssistMethodFragment extends Fragment implements SelectAssist
 
     @Override
     public void goToRegression() {
-        Toast.makeText(getContext(), "GO TO AHP REGRESSION METHOD", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override

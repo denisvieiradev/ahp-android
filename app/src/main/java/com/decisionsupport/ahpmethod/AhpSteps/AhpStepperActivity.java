@@ -5,8 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.decisionsupport.domain.entity.AhpMethod;
+import com.decisionsupport.domain.entity.Alternative;
+import com.decisionsupport.domain.entity.Criterion;
 import com.github.fcannizzaro.materialstepper.AbstractStep;
 import com.github.fcannizzaro.materialstepper.style.DotStepper;
+
+import java.util.List;
 
 /**
  * Created by denisvieira on 04/01/17.
@@ -21,10 +26,19 @@ public class AhpStepperActivity extends DotStepper {
     protected void onCreate(Bundle savedInstanceState) {
 
         setErrorTimeout(1500);
-        setTitle("AHP");
+        setTitle("Seleção de Preferências");
 
-        addStep(createFragment(new AddAlternativeStep()));
-        addStep(createFragment(new AddCriterionsStep()));
+        Intent intent = getIntent();
+        AhpMethod ahpMethod = (AhpMethod) intent.getSerializableExtra("ahpBundle");
+
+        List<Alternative> alternatives = ahpMethod.getAlternatives();
+        List<Criterion> criterions = ahpMethod.getCriterions();
+
+        addStep(createFragment(new InitialStep()));
+        addStep(createFragment(new CriterionOneStep(alternatives, criterions.get(0))));
+        addStep(createFragment(new CriterionOneStep(alternatives, criterions.get(1))));
+        addStep(createFragment(new CriterionOneStep(alternatives, criterions.get(2))));
+        addStep(createFragment(new CriterionOneStep(alternatives, criterions.get(3))));
 
         configureAlertDialogOnBackPressed();
 

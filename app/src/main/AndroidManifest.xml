@@ -19,7 +19,7 @@
 
         <activity android:name=".selectassistmethod.SelectAssistMethodActivity" />
 
-        <activity android:name=".ahpmethod.AhpDashboard.AhpDashboardActivity" />
+        <activity android:name=".ahpmethod.ahpdashboard.AhpDashboardActivity" />
 
         <activity android:name=".ahpmethod.AhpSteps.AhpStepperActivity"/>
 

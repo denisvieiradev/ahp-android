@@ -7,23 +7,23 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.decisionsupport.R;
-import com.decisionsupport.databinding.AhpMethodAddAlternativesStepBinding;
+import com.decisionsupport.databinding.AhpMethodInitialStepBinding;
 import com.github.fcannizzaro.materialstepper.AbstractStep;
 
 /**
  * Created by denisvieira on 04/01/17.
  */
-public class AddAlternativeStep extends AbstractStep {
+public class InitialStep extends AbstractStep {
 
     private int i = 1;
     private final static String CLICK = "click";
 
-    private AhpMethodAddAlternativesStepBinding mBinding;
+    private AhpMethodInitialStepBinding mBinding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.ahp_method_add_alternatives_step,container,false);
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.ahp_method_initial_step,container,false);
 
         return mBinding.getRoot();
     }

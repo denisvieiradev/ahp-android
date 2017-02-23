@@ -1,5 +1,6 @@
 package com.decisionsupport.ahpmethod.AhpSteps;
 
+import android.annotation.SuppressLint;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,20 +8,32 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.decisionsupport.R;
-import com.decisionsupport.databinding.AhpMethodAddCriterionsStepBinding;
+import com.decisionsupport.databinding.AhpMethodCriterionOneStepBinding;
+import com.decisionsupport.domain.entity.Alternative;
+import com.decisionsupport.domain.entity.Criterion;
 import com.github.fcannizzaro.materialstepper.AbstractStep;
+
+import java.util.List;
 
 /**
  * Created by denisvieira on 04/01/17.
  */
-public class AddCriterionsStep extends AbstractStep {
+public class CriterionFourStep extends AbstractStep {
 
-    private AhpMethodAddCriterionsStepBinding mBinding;
+    private AhpMethodCriterionOneStepBinding mBinding;
+    private List<Alternative> mAlternatives;
+    private Criterion mCriterion;
+
+    @SuppressLint("ValidFragment")
+    public CriterionFourStep(List<Alternative> alternatives, Criterion criterion){
+        this.mAlternatives = alternatives;
+        this.mCriterion = criterion;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.ahp_method_add_criterions_step,container,false);
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.ahp_method_criterion_one_step,container,false);
 
         return mBinding.getRoot();
     }

@@ -1,10 +1,10 @@
-package com.decisionsupport.ahpmethod.AhpDashboard;
+package com.decisionsupport.ahpmethod.ahpdashboard;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringDef;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,17 +12,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.decisionsupport.R;
+import com.decisionsupport.ahpmethod.AhpSteps.AhpStepperActivity;
 import com.decisionsupport.databinding.AhpDashboardAddAlternativeDialogBinding;
 import com.decisionsupport.databinding.AhpDashboardAddCriterionDialogBinding;
 import com.decisionsupport.databinding.AhpDashboardFragBinding;
+import com.decisionsupport.domain.entity.AhpMethod;
 import com.decisionsupport.domain.entity.Alternative;
 import com.decisionsupport.domain.entity.Criterion;
-import com.decisionsupport.utils.GuidGenerator;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by denisvieira on 04/01/17.
@@ -119,7 +121,16 @@ public class AhpDashboardFragment extends Fragment implements AhpDashboardContra
     }
 
     @Override
-    public void startNew() {
+    public void startNew(View view) {
+        if(mAhpDashboardAlternativeAdapter.getItemCount() == 4 && mAhpDashboardCriterionAdapter.getItemCount() == 4){
+            Intent intent = new Intent(getContext(), AhpStepperActivity.class);
+            AhpMethod ahpMethod = new AhpMethod(mAhpDashboardCriterionAdapter.getCriterions(),mAhpDashboardAlternativeAdapter.getAlternatives());
+            intent.putExtra("ahpBundle", (Serializable) ahpMethod );
+            startActivity(intent);
+        }else{
+            Toast.makeText(getContext(), "Por favor, para continuar adicione 4 criterios e 4 alternativas", Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
@@ -145,7 +156,10 @@ public class AhpDashboardFragment extends Fragment implements AhpDashboardContra
 
     @Override
     public void openAddCriterionDialog(View view) {
-        addCriterionDialog.show();
+        if(mAhpDashboardCriterionAdapter.getItemCount() == 4)
+            Toast.makeText(getContext(), "Nesta versão, Não é possível adicionar mais de 4 alternativas .", Toast.LENGTH_SHORT).show();
+        else
+            addCriterionDialog.show();
     }
 
     @Override
@@ -155,7 +169,10 @@ public class AhpDashboardFragment extends Fragment implements AhpDashboardContra
 
     @Override
     public void openAddAlternativeDialog(View view) {
-        addAlternativeDialog.show();
+        if(mAhpDashboardAlternativeAdapter.getItemCount() == 4)
+            Toast.makeText(getContext(), "Nesta versão, Não é possível adicionar mais de 4 alternativas .", Toast.LENGTH_SHORT).show();
+        else
+            addAlternativeDialog.show();
     }
 
     @Override
