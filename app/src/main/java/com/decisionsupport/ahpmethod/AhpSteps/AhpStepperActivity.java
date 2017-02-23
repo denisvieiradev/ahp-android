@@ -36,9 +36,9 @@ public class AhpStepperActivity extends DotStepper {
 
         addStep(createFragment(new InitialStep()));
         addStep(createFragment(new CriterionOneStep(alternatives, criterions.get(0))));
-        addStep(createFragment(new CriterionTwoStep()));
-        addStep(createFragment(new CriterionThreeStep()));
-        addStep(createFragment(new CriterionFourStep()));
+        addStep(createFragment(new CriterionOneStep(alternatives, criterions.get(1))));
+        addStep(createFragment(new CriterionOneStep(alternatives, criterions.get(2))));
+        addStep(createFragment(new CriterionOneStep(alternatives, criterions.get(3))));
 
         configureAlertDialogOnBackPressed();
 

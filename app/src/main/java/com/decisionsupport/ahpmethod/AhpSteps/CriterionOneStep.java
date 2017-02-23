@@ -75,30 +75,7 @@ public class CriterionOneStep extends AbstractStep {
         mBinding.ahpMethodCriterionComparisonListRecyclerView.setLayoutManager(layout);
         mBinding.ahpMethodCriterionComparisonListRecyclerView.setAdapter(mAhpComparionItemAdapter);
 
-
-        configureSeekBars();
-
         return mBinding.getRoot();
-    }
-
-
-    public void configureSeekBars(){
-//        mBinding.ahpMethodCriterionOneStepFirstSeekbar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-//            @Override
-//            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//
-//            }
-//
-//            @Override
-//            public void onStartTrackingTouch(SeekBar seekBar) {
-//
-//            }
-//
-//            @Override
-//            public void onStopTrackingTouch(SeekBar seekBar) {
-//
-//            }
-//        });
     }
 
     @Override
@@ -143,72 +120,6 @@ public class CriterionOneStep extends AbstractStep {
         return "<b>You must click!</b> <small>this is the condition!</small>";
     }
 
-
-    private void verificaSeekBar(int progress, int i, int j) {
-
-        switch (progress) {
-
-            case 0:
-                criterion1matrix[i][j] = 1/9.2f;
-                criterion1matrix[j][i] = 9;
-                break;
-
-            case 1:
-
-//                Snackbar.make(findViewById(android.R.id.content), "Localização Muito Inferior", Snackbar.LENGTH_LONG).show();
-                criterion1matrix[i][j] = 1/7.2f;
-                criterion1matrix[j][i] = 7;
-                break;
-
-            case 2:
-//                Snackbar.make(findViewById(android.R.id.content), "Localização com Grande Inferioridade", Snackbar.LENGTH_LONG).show();
-                criterion1matrix[i][j] = 1/5.2f;
-                criterion1matrix[j][i] = 5;
-                break;
-            case 3:
-//                Snackbar.make(findViewById(android.R.id.content), "Localização com Pequena Inferioridade", Snackbar.LENGTH_LONG).show();
-                criterion1matrix[i][j] = 1/3.2f;
-                criterion1matrix[j][i] = 3;
-                break;
-            case 4:
-//                Snackbar.make(findViewById(android.R.id.content), "Igual Importância", Snackbar.LENGTH_LONG).show();
-                criterion1matrix[i][j] = 1;
-                criterion1matrix[j][i] = 1;
-                break;
-            case 5:
-//                Snackbar.make(findViewById(android.R.id.content), "Localização com Pequena Superioridade", Snackbar.LENGTH_LONG).show();
-                criterion1matrix[i][j] = 3;
-                criterion1matrix[j][i] = 1/3.2f;
-                break;
-            case 6:
-//                Snackbar.make(findViewById(android.R.id.content), "Localização com Grande Superioridade", Snackbar.LENGTH_LONG).show();
-                criterion1matrix[i][j] = 5;
-                criterion1matrix[j][i] = 1/5.2f;
-                break;
-            case 7:
-//                Snackbar.make(findViewById(android.R.id.content), "Localização Muito Superior", Snackbar.LENGTH_LONG).show();
-                criterion1matrix[i][j] = 7;
-                criterion1matrix[j][i] = 1/7.2f;
-                break;
-            case 8:
-//                Snackbar.make(findViewById(android.R.id.content), "Localização Absolutamente Superior", Snackbar.LENGTH_LONG).show();
-                criterion1matrix[i][j] = 9;
-                criterion1matrix[j][i] = 1/9.2f;
-                break;
-        }
-
-
-
-//        System.out.println("\nMatriz");
-//        imprimeMatriz(criterion1matrix);
-//        System.out.println("\nMatriz normalizada:");
-//        float[][] criterion1matrix2;
-//        AhpMethod ahp = new AhpMethod();
-//        criterion1matrix2 = ahp.nomaliza(criterion1matrix);
-//        imprimeMatriz(criterion1matrix2);
-//        System.out.println("\nMatriz Media:");
-        //imprimeMatriz(ahp.criterion1matrixMedia(criterion1matrix2));
-    }
 
     public void imprimeMatriz(float [][] criterion1matrix3){
         for(float[] c : criterion1matrix3){

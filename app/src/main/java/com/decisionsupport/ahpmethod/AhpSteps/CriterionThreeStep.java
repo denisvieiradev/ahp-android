@@ -1,5 +1,6 @@
 package com.decisionsupport.ahpmethod.AhpSteps;
 
+import android.annotation.SuppressLint;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +9,11 @@ import android.view.ViewGroup;
 
 import com.decisionsupport.R;
 import com.decisionsupport.databinding.AhpMethodCriterionOneStepBinding;
+import com.decisionsupport.domain.entity.Alternative;
+import com.decisionsupport.domain.entity.Criterion;
 import com.github.fcannizzaro.materialstepper.AbstractStep;
+
+import java.util.List;
 
 /**
  * Created by denisvieira on 04/01/17.
@@ -16,6 +21,14 @@ import com.github.fcannizzaro.materialstepper.AbstractStep;
 public class CriterionThreeStep extends AbstractStep {
 
     private AhpMethodCriterionOneStepBinding mBinding;
+    private List<Alternative> mAlternatives;
+    private Criterion mCriterion;
+
+    @SuppressLint("ValidFragment")
+    public CriterionThreeStep(List<Alternative> alternatives, Criterion criterion){
+        this.mAlternatives = alternatives;
+        this.mCriterion = criterion;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
