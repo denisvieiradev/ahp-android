@@ -7,7 +7,7 @@
     <data>
         <variable
             name="alternative"
-            type="com.decisionsupport.domain.entity.Alternative"/>
+            type="com.ahpandroid.domain.entity.Alternative"/>
     </data>
 
     <com.daimajia.swipe.SwipeLayout

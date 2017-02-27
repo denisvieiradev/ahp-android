@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Suporte à Decisões</string>
+    <string name="app_name">Processo Analítico Hierárquico</string>
 
     <string name="select_assist_method_item_button_read_more">Leia Mais</string>
 

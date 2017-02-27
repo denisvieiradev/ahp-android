@@ -6,7 +6,7 @@
     <data>
         <variable
             name="handler"
-            type="com.decisionsupport.ahpmethod.ahpdashboard.AhpDashboardFragment"/>
+            type="com.ahpandroid.ahpmethod.ahpdashboard.AhpDashboardFragment"/>
     </data>
 
     <android.support.design.widget.CoordinatorLayout

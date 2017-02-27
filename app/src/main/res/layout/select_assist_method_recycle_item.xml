@@ -5,7 +5,7 @@
     <data>
         <variable
             name="assistmethod"
-            type="com.decisionsupport.domain.entity.AssistMethod" />
+            type="com.ahpandroid.domain.entity.AssistMethod" />
 
     </data>
 

@@ -7,7 +7,7 @@
     <data>
         <variable
             name="criterion"
-            type="com.decisionsupport.domain.entity.Criterion"/>
+            type="com.ahpandroid.domain.entity.Criterion"/>
     </data>
 
     <com.daimajia.swipe.SwipeLayout

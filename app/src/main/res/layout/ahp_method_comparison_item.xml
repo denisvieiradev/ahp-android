@@ -6,11 +6,11 @@
     <data>
         <variable
             name="comparisonItem"
-            type="com.decisionsupport.domain.entity.ComparisonItem"/>
+            type="com.ahpandroid.domain.entity.ComparisonItem"/>
 
         <variable
             name="handler"
-            type="com.decisionsupport.ahpmethod.AhpSteps.AhpComparionItemAdapter"/>
+            type="com.ahpandroid.ahpmethod.AhpSteps.AhpComparionItemAdapter"/>
     </data>
 
     <LinearLayout
