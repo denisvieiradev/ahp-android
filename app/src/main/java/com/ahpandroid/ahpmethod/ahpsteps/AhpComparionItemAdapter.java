@@ -1,4 +1,4 @@
-package com.ahpandroid.ahpmethod.AhpSteps;
+package com.ahpandroid.ahpmethod.ahpsteps;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;

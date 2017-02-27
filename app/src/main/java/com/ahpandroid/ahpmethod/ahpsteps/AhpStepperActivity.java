@@ -1,10 +1,11 @@
-package com.ahpandroid.ahpmethod.AhpSteps;
+package com.ahpandroid.ahpmethod.ahpsteps;
 
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.ahpandroid.domain.entity.AhpMatrices;
 import com.ahpandroid.domain.entity.AhpMethod;
 import com.ahpandroid.domain.entity.Alternative;
 import com.ahpandroid.domain.entity.Criterion;
@@ -18,9 +19,10 @@ import java.util.List;
  */
 public class AhpStepperActivity extends DotStepper {
 
-    private int i = 1;
+    private int i = 0;
     private AlertDialog alertDialog;
     AlertDialog.Builder alertDialogBuilder;
+    private AhpMatrices ahpMatrices;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +33,14 @@ public class AhpStepperActivity extends DotStepper {
         Intent intent = getIntent();
         AhpMethod ahpMethod = (AhpMethod) intent.getSerializableExtra("ahpBundle");
 
-        List<Alternative> alternatives = ahpMethod.getAlternatives();
-        List<Criterion> criterions = ahpMethod.getCriterions();
+        List<String> alternatives = ahpMethod.getAlternatives();
+        List<String> criterions = ahpMethod.getCriterions();
 
         addStep(createFragment(new InitialStep()));
-        addStep(createFragment(new CriterionOneStep(alternatives, criterions.get(0))));
-        addStep(createFragment(new CriterionOneStep(alternatives, criterions.get(1))));
-        addStep(createFragment(new CriterionOneStep(alternatives, criterions.get(2))));
-        addStep(createFragment(new CriterionOneStep(alternatives, criterions.get(3))));
+        for(int x = 0; x < 4; x++){
+            addStep(createFragment(new ComparisonStep(alternatives, criterions.get(x),x)));
+        }
+        addStep(createFragment(new ComparisonStep(criterions," Construir Matriz de prioridade",4)));
 
         configureAlertDialogOnBackPressed();
 
@@ -63,15 +65,41 @@ public class AhpStepperActivity extends DotStepper {
     }
 
     private AbstractStep createFragment(AbstractStep fragment) {
-        Bundle b = new Bundle();
-        b.putInt("position", i++);
-        fragment.setArguments(b);
+//        Bundle b = new Bundle();
+//        b.putSerializable("Tab_"+i, criterionMatrix);
+//        fragment.setArguments(b);
         return fragment;
     }
 
     @Override
     public void onComplete() {
         super.onComplete();
+
+        ahpMatrices = new AhpMatrices();
+
+        for(int x = 0; x < 4; x++) {
+
+            float[][] stepMatrix = (float[][]) getExtras().getSerializable("Tab_" + x);
+            imprimeMatriz(stepMatrix);
+            switch (x) {
+                case 0:
+                    ahpMatrices.setCriterionOneMatrix(stepMatrix);
+                    break;
+                case 1:
+                    ahpMatrices.setCriterionTwoMatrix(stepMatrix);
+                    break;
+                case 2:
+                    ahpMatrices.setCriterionThreeMatrix(stepMatrix);
+                    break;
+                case 3:
+                    ahpMatrices.setCriterionFourMatrix(stepMatrix);
+                    break;
+            }
+        }
+
+        float [][] preferenceMatrix = ahpMatrices.generateResultMatrix();
+
+
         Toast.makeText(getApplicationContext(), "Completed Steps !", Toast.LENGTH_SHORT).show();
     }
 
@@ -80,15 +108,16 @@ public class AhpStepperActivity extends DotStepper {
         alertDialog.show();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    private void imprimeMatriz(float [][] criterion1matrix3){
+        for(float[] c : criterion1matrix3){
 
-        if (data != null && data.getExtras() != null)
-            for (String key : data.getExtras().keySet())
-                Toast.makeText(this, key + " : " + data.getExtras().get(key).toString(), Toast.LENGTH_SHORT).show();
-
-        super.onActivityResult(requestCode, resultCode, data);
+            for(float elemento : c)
+                System.out.printf(" %.2f ", elemento);
+            System.out.printf("\n");
+        }
 
     }
+
+
 
 }

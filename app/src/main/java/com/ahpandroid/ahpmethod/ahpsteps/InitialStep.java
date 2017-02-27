@@ -1,6 +1,5 @@
-package com.ahpandroid.ahpmethod.AhpSteps;
+package com.ahpandroid.ahpmethod.ahpsteps;
 
-import android.annotation.SuppressLint;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,32 +7,23 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ahpandroid.R;
-import com.ahpandroid.databinding.AhpMethodCriterionOneStepBinding;
-import com.ahpandroid.domain.entity.Alternative;
-import com.ahpandroid.domain.entity.Criterion;
+import com.ahpandroid.databinding.AhpMethodInitialStepBinding;
 import com.github.fcannizzaro.materialstepper.AbstractStep;
-
-import java.util.List;
 
 /**
  * Created by denisvieira on 04/01/17.
  */
-public class CriterionFourStep extends AbstractStep {
+public class InitialStep extends AbstractStep {
 
-    private AhpMethodCriterionOneStepBinding mBinding;
-    private List<Alternative> mAlternatives;
-    private Criterion mCriterion;
+    private int i = 1;
+    private final static String CLICK = "click";
 
-    @SuppressLint("ValidFragment")
-    public CriterionFourStep(List<Alternative> alternatives, Criterion criterion){
-        this.mAlternatives = alternatives;
-        this.mCriterion = criterion;
-    }
+    private AhpMethodInitialStepBinding mBinding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.ahp_method_criterion_one_step,container,false);
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.ahp_method_initial_step,container,false);
 
         return mBinding.getRoot();
     }
@@ -41,6 +31,7 @@ public class CriterionFourStep extends AbstractStep {
     @Override
     public void onSaveInstanceState(Bundle state) {
         super.onSaveInstanceState(state);
+        state.putInt(CLICK, i);
     }
 
     @Override
@@ -52,6 +43,7 @@ public class CriterionFourStep extends AbstractStep {
     public boolean isOptional() {
         return true;
     }
+
 
     @Override
     public void onStepVisible() {
@@ -72,9 +64,14 @@ public class CriterionFourStep extends AbstractStep {
         return "You can skip";
     }
 
+    @Override
+    public boolean nextIf() {
+        return i > 1;
+    }
 
     @Override
     public String error() {
         return "<b>You must click!</b> <small>this is the condition!</small>";
     }
 }
+

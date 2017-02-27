@@ -1,4 +1,4 @@
-package com.ahpandroid.ahpmethod.AhpSteps;
+package com.ahpandroid.ahpmethod.ahpsteps;
 
 import android.annotation.SuppressLint;
 import android.databinding.DataBindingUtil;
@@ -11,10 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ahpandroid.R;
-import com.ahpandroid.databinding.AhpMethodCriterionOneStepBinding;
-import com.ahpandroid.domain.entity.Alternative;
+import com.ahpandroid.databinding.AhpMethodComparisonStepBinding;
 import com.ahpandroid.domain.entity.ComparisonItem;
-import com.ahpandroid.domain.entity.Criterion;
 import com.github.fcannizzaro.materialstepper.AbstractStep;
 
 import java.util.ArrayList;
@@ -25,18 +23,20 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /**
  * Created by denisvieira on 04/01/17.
  */
-public class CriterionOneStep extends AbstractStep {
+public class ComparisonStep extends AbstractStep {
 
-    AhpMethodCriterionOneStepBinding mBinding;
+    AhpMethodComparisonStepBinding mBinding;
     private AhpComparionItemAdapter mAhpComparionItemAdapter;
-    private float[][] criterionMatrix;
-    private List<Alternative> mAlternatives;
-    private Criterion mCriterion;
+    private float[][] comparisonMatrix;
+    private List<String> mComparisonItems;
+    private String mComparisonTitle;
+    private int mStepIndex;
 
     @SuppressLint("ValidFragment")
-    public CriterionOneStep(List<Alternative> alternatives, Criterion criterion){
-        this.mAlternatives = alternatives;
-        this.mCriterion = criterion;
+    public ComparisonStep(List<String> comparisonItems, String comparisonTitle, int stepIndex){
+        this.mComparisonItems = comparisonItems;
+        this.mComparisonTitle = comparisonTitle;
+        this.mStepIndex = stepIndex;
     }
 
     @Override
@@ -44,13 +44,15 @@ public class CriterionOneStep extends AbstractStep {
         super.onCreate(savedInstanceState);
         mAhpComparionItemAdapter = new AhpComparionItemAdapter(getContext(), new ArrayList<>());
 
+        System.out.println(name());
+
         List<ComparisonItem> comparisonItemList = new ArrayList<>();
-        comparisonItemList.add(new ComparisonItem(mAlternatives.get(0).getTitle(),mAlternatives.get(1).getTitle()));
-        comparisonItemList.add(new ComparisonItem(mAlternatives.get(0).getTitle(),mAlternatives.get(2).getTitle()));
-        comparisonItemList.add(new ComparisonItem(mAlternatives.get(0).getTitle(),mAlternatives.get(3).getTitle()));
-        comparisonItemList.add(new ComparisonItem(mAlternatives.get(1).getTitle(),mAlternatives.get(2).getTitle()));
-        comparisonItemList.add(new ComparisonItem(mAlternatives.get(1).getTitle(),mAlternatives.get(3).getTitle()));
-        comparisonItemList.add(new ComparisonItem(mAlternatives.get(2).getTitle(),mAlternatives.get(3).getTitle()));
+        comparisonItemList.add(new ComparisonItem(mComparisonItems.get(0), mComparisonItems.get(1)));
+        comparisonItemList.add(new ComparisonItem(mComparisonItems.get(0), mComparisonItems.get(2)));
+        comparisonItemList.add(new ComparisonItem(mComparisonItems.get(0), mComparisonItems.get(3)));
+        comparisonItemList.add(new ComparisonItem(mComparisonItems.get(1), mComparisonItems.get(2)));
+        comparisonItemList.add(new ComparisonItem(mComparisonItems.get(1), mComparisonItems.get(3)));
+        comparisonItemList.add(new ComparisonItem(mComparisonItems.get(2), mComparisonItems.get(3)));
 
         mAhpComparionItemAdapter.replaceData(comparisonItemList);
 
@@ -59,8 +61,8 @@ public class CriterionOneStep extends AbstractStep {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.ahp_method_criterion_one_step,container,false);
-        mBinding.setCriterion(mCriterion);
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.ahp_method_comparison_step,container,false);
+        mBinding.setComparisonTitle(mComparisonTitle);
 
         mBinding.ahpMethodCriterionComparisonListRecyclerView.setNestedScrollingEnabled(false);
         mBinding.ahpMethodCriterionComparisonListRecyclerView.setFocusable(false);
@@ -71,7 +73,8 @@ public class CriterionOneStep extends AbstractStep {
         return mBinding.getRoot();
     }
 
-    private void generateCriterionMatrice(){
+
+    private void generateComparisonMatrice(){
 
         List<ComparisonItem> comparisonItems = mAhpComparionItemAdapter.getComparisonItems();
         ComparisonItem comparisonItem0 = comparisonItems.get(0);
@@ -81,13 +84,14 @@ public class CriterionOneStep extends AbstractStep {
         ComparisonItem comparisonItem4 = comparisonItems.get(4);
         ComparisonItem comparisonItem5 = comparisonItems.get(5);
 
-        float[][] matrix =
-                {{1, comparisonItem0.getSecondAlternativeValue(), comparisonItem1.getSecondAlternativeValue(), comparisonItem2.getSecondAlternativeValue()},
-                        {comparisonItem0.getFirstAlternativeValue(), 1, comparisonItem3.getSecondAlternativeValue(), comparisonItem4.getSecondAlternativeValue()},
-                        {comparisonItem1.getFirstAlternativeValue(), comparisonItem3.getFirstAlternativeValue(), 1, comparisonItem5.getSecondAlternativeValue()},
-                        {comparisonItem2.getFirstAlternativeValue(), comparisonItem4.getFirstAlternativeValue(), comparisonItem5.getFirstAlternativeValue(), 1}};
+        float[][] matrix ={
+                {1, comparisonItem0.getSecondAlternativeValue(), comparisonItem1.getSecondAlternativeValue(), comparisonItem2.getSecondAlternativeValue()},
+                {comparisonItem0.getFirstAlternativeValue(), 1, comparisonItem3.getSecondAlternativeValue(), comparisonItem4.getSecondAlternativeValue()},
+                {comparisonItem1.getFirstAlternativeValue(), comparisonItem3.getFirstAlternativeValue(), 1, comparisonItem5.getSecondAlternativeValue()},
+                {comparisonItem2.getFirstAlternativeValue(), comparisonItem4.getFirstAlternativeValue(), comparisonItem5.getFirstAlternativeValue(), 1}
+        };
 
-        criterionMatrix = matrix;
+        comparisonMatrix = matrix;
     }
 
     @Override
@@ -97,7 +101,7 @@ public class CriterionOneStep extends AbstractStep {
 
     @Override
     public String name() {
-        return "Tab " + getArguments().getInt("position", 0);
+        return "Tab_"+mStepIndex;
     }
 
     @Override
@@ -111,9 +115,10 @@ public class CriterionOneStep extends AbstractStep {
 
     @Override
     public void onNext() {
-        generateCriterionMatrice();
+        generateComparisonMatrice();
 
-        imprimeMatriz(criterionMatrix);
+        imprimeMatriz(comparisonMatrix);
+        mStepper.getExtras().putSerializable(name(), comparisonMatrix);
 
         System.out.println("onNext ");
     }
@@ -135,7 +140,7 @@ public class CriterionOneStep extends AbstractStep {
     }
 
 
-    public void imprimeMatriz(float [][] criterion1matrix3){
+    private void imprimeMatriz(float [][] criterion1matrix3){
         for(float[] c : criterion1matrix3){
 
             for(float elemento : c)
@@ -145,23 +150,4 @@ public class CriterionOneStep extends AbstractStep {
 
     }
 
-    public float[][] inicializaMatriz(int l, int c ) {
-
-        float [][] criterion1matrixNull = new float[l][c];
-        for (int linha = 0; linha<criterion1matrixNull.length; linha++){
-            for (int coluna =0; coluna<criterion1matrixNull.length; coluna++) {
-                if(linha==coluna)
-                    criterion1matrixNull[linha][coluna]=1;
-                else
-                    criterion1matrixNull[linha][coluna] =1/9;
-            }
-        }
-//
-//        criterion1matrix[0][0]=1;
-//        criterion1matrix[1][1]=1;
-//        criterion1matrix[2][2]=1;
-//        criterion1matrix[3][3]=1;
-
-        return criterion1matrixNull;
-    }
 }

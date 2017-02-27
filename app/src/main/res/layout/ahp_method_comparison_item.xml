@@ -10,7 +10,7 @@
 
         <variable
             name="handler"
-            type="com.ahpandroid.ahpmethod.AhpSteps.AhpComparionItemAdapter"/>
+            type="com.ahpandroid.ahpmethod.ahpsteps.AhpComparionItemAdapter"/>
     </data>
 
     <LinearLayout

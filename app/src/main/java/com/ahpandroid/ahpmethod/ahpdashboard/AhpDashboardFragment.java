@@ -15,16 +15,18 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.ahpandroid.R;
-import com.ahpandroid.ahpmethod.AhpSteps.AhpStepperActivity;
+import com.ahpandroid.ahpmethod.ahpsteps.AhpStepperActivity;
 import com.ahpandroid.databinding.AhpDashboardAddAlternativeDialogBinding;
 import com.ahpandroid.databinding.AhpDashboardAddCriterionDialogBinding;
 import com.ahpandroid.databinding.AhpDashboardFragBinding;
 import com.ahpandroid.domain.entity.AhpMethod;
 import com.ahpandroid.domain.entity.Alternative;
 import com.ahpandroid.domain.entity.Criterion;
+import com.ahpandroid.utils.GuidGenerator;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by denisvieira on 04/01/17.
@@ -51,20 +53,20 @@ public class AhpDashboardFragment extends Fragment implements AhpDashboardContra
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-//        List<Criterion> criterionList = new ArrayList<>();
-//        List<Alternative> alternativeList= new ArrayList<>();
-//        for (int x=0; x<5;x++){
-//            Criterion criterion = new Criterion(GuidGenerator.generate(),"Criterion "+x);
-//            Alternative alternative = new Alternative(GuidGenerator.generate(), "Alternative "+x);
-//            criterionList.add(criterion);
-//            alternativeList.add(alternative);
-//        }
+        List<String> criterionList = new ArrayList<>();
+        List<String> alternativeList= new ArrayList<>();
+        for (int x=0; x<4;x++){
+            String criterion = "Criterion "+x;
+            String alternative = "Alternative "+x;
+            criterionList.add(criterion);
+            alternativeList.add(alternative);
+        }
 
-        mAhpDashboardAlternativeAdapter = new AhpDashboardAlternativeAdapter( new ArrayList<Alternative>(0),getContext(),this);
-        mAhpDashboardCriterionAdapter = new AhpDashboardCriterionAdapter( new ArrayList<Criterion>(0),getContext(),this);
-//
-//        mAhpDashboardAlternativeAdapter.replaceData(alternativeList);
-//        mAhpDashboardCriterionAdapter.replaceData(criterionList);
+        mAhpDashboardAlternativeAdapter = new AhpDashboardAlternativeAdapter( new ArrayList<String>(0),getContext(),this);
+        mAhpDashboardCriterionAdapter = new AhpDashboardCriterionAdapter( new ArrayList<String>(0),getContext(),this);
+
+        mAhpDashboardAlternativeAdapter.replaceData(alternativeList);
+        mAhpDashboardCriterionAdapter.replaceData(criterionList);
     }
 
     @Nullable
@@ -84,10 +86,6 @@ public class AhpDashboardFragment extends Fragment implements AhpDashboardContra
             });
         }
 
-//        mAhpDashboardFragBinding.ahpDashboardStartButton.setOnClickListener(view ->{
-//            Intent intent = new Intent(getContext(), AhpStepperActivity.class);
-//            startActivity(intent);
-//        });
         RecyclerView.LayoutManager layout = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         RecyclerView.LayoutManager layout2 = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
 

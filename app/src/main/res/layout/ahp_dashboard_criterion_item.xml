@@ -7,7 +7,7 @@
     <data>
         <variable
             name="criterion"
-            type="com.ahpandroid.domain.entity.Criterion"/>
+            type="String"/>
     </data>
 
     <com.daimajia.swipe.SwipeLayout
@@ -39,7 +39,7 @@
             <TextView
                 android:tag="Hover"
                 tools:text="If winter comes"
-                android:text="@{criterion.title}"
+                android:text="@{criterion}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
