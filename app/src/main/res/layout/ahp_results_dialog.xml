@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <data>
+        <variable
+            name="handler"
+            type="com.ahpandroid.ahpmethod.ahpresultsdialog.AhpResultsDialog"/>
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="300dp"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:src="@drawable/ic_close_dialog_gray"
+                android:layout_alignParentRight="true"
+                android:padding="10dp"
+                android:layout_marginEnd="10dp"
+                android:onClick="@{handler::close}"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Matriz de Preferência"
+            android:gravity="center"
+            android:paddingBottom="20dp"/>
+
+
+        <ScrollView
+            android:id="@+id/layout"
+            android:layout_height="wrap_content"
+            android:scrollbars="horizontal|vertical"
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dip"
+            android:scrollbarStyle="outsideInset"
+            android:fillViewport="true">
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalView"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal|vertical"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dip">
+
+                <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_gravity="center"
+                    android:showDividers="middle">
+                    <TableRow>
+                        <TextView
+                            android:text=""
+                            android:padding="3dip" />
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_crit_0"
+                            tools:text="Crit 0"
+                            android:text="Crit 0"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_crit_1"
+                            tools:text="Crit 1"
+                            android:text="Crit 1"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_crit_2"
+                            tools:text="Crit 2"
+                            android:text="Crit 2"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_crit_3"
+                            tools:text="Crit 3"
+                            android:text="Crit 3"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_0"
+                            tools:text="Alt 0"
+                            android:text="Alt 1"
+                            android:gravity="center"
+                            android:padding="3dip" />
+
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_0_crit_0"
+                            tools:text="Crit 0"
+                            android:text="Crit 0"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_0_crit_1"
+                            tools:text="Crit 1"
+                            android:text="Crit 1"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_0_crit_2"
+                            tools:text="Crit 2"
+                            android:text="Crit 2"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_0_crit_3"
+                            tools:text="Crit 3"
+                            android:text="Crit 3"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_1"
+                            android:gravity="center"
+                            tools:text="Alt 1"
+                            android:text="Alt 1"
+                            android:padding="3dip" />
+
+
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_1_crit_0"
+                            tools:text="Crit 0"
+                            android:text="Crit 0"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_1_crit_1"
+                            tools:text="Crit 1"
+                            android:text="Crit 1"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_1_crit_2"
+                            tools:text="Crit 2"
+                            android:text="Crit 2"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_1_crit_3"
+                            tools:text="Crit 3"
+                            android:text="Crit 3"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_2"
+                            tools:text="Alt 2"
+                            android:text="Alt 2"
+                            android:padding="3dip" />
+
+
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_2_crit_0"
+                            tools:text="Crit 0"
+                            android:text="Crit 0"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_2_crit_1"
+                            tools:text="Crit 1"
+                            android:text="Crit 1"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_2_crit_2"
+                            tools:text="Crit 2"
+                            android:text="Crit 2"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_2_crit_3"
+                            tools:text="Crit 3"
+                            android:text="Crit 3"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_3"
+                            tools:text="Alt 3"
+                            android:text="Alt 3"
+                            android:padding="3dip" />
+
+
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_3_crit_0"
+                            tools:text="Crit 0"
+                            android:text="Crit 0"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_3_crit_1"
+                            tools:text="Crit 1"
+                            android:text="Crit 1"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_3_crit_2"
+                            tools:text="Crit 2"
+                            android:text="Crit 2"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                        <TextView
+                            android:id="@+id/ahp_result_preference_matrix_alt_3_crit_3"
+                            tools:text="Crit 3"
+                            android:text="Crit 3"
+                            android:gravity="center"
+                            android:padding="3dip"
+                            />
+                    </TableRow>
+                </TableLayout>
+
+            </HorizontalScrollView>
+        </ScrollView>
+
+
+
+    </LinearLayout>
+</layout>

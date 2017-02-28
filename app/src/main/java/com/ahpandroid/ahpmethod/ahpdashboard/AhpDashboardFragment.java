@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.ahpandroid.R;
+import com.ahpandroid.ahpmethod.ahpresultsdialog.AhpResultsDialog;
 import com.ahpandroid.ahpmethod.ahpsteps.AhpStepperActivity;
 import com.ahpandroid.databinding.AhpDashboardAddAlternativeDialogBinding;
 import com.ahpandroid.databinding.AhpDashboardAddCriterionDialogBinding;
@@ -27,6 +28,8 @@ import com.ahpandroid.utils.GuidGenerator;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by denisvieira on 04/01/17.
@@ -41,6 +44,7 @@ public class AhpDashboardFragment extends Fragment implements AhpDashboardContra
     private Dialog addAlternativeDialog;
     private AhpDashboardAddCriterionDialogBinding mAhpDashboardAddCriterionDialogBinding;
     private AhpDashboardAddAlternativeDialogBinding mAhpDashboardAddAlternativeDialogBinding;
+    private AhpResultsDialog mAhpResultsDialog;
 
 
     public AhpDashboardFragment() {}
@@ -69,11 +73,38 @@ public class AhpDashboardFragment extends Fragment implements AhpDashboardContra
         mAhpDashboardCriterionAdapter.replaceData(criterionList);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode,resultCode,data);
+        if (resultCode == RESULT_OK) {
+
+            float [][] preferenceMatrix = (float[][]) data.getExtras().getSerializable("result");
+
+            mAhpResultsDialog.showPreferenceMatrix(preferenceMatrix,mAhpDashboardAlternativeAdapter.getAlternatives(),mAhpDashboardCriterionAdapter.getCriterions());
+
+            System.out.println("MATRIZ DE PREFERÊNCIA");
+            imprimeMatriz(preferenceMatrix);
+        }
+    }
+
+    private void imprimeMatriz(float [][] criterion1matrix3){
+        for(float[] c : criterion1matrix3){
+
+            for(float elemento : c)
+                System.out.printf(" %.2f ", elemento);
+            System.out.printf("\n");
+        }
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mAhpDashboardFragBinding = DataBindingUtil.inflate(inflater, R.layout.ahp_dashboard_frag,container,false);
         mAhpDashboardFragBinding.setHandler(this);
+
+
+        mAhpResultsDialog = new AhpResultsDialog(getContext(),this);
 
         if (mAhpDashboardFragBinding.ahpDashboardToolbar != null){
             ((AppCompatActivity) getActivity()).setSupportActionBar(mAhpDashboardFragBinding.ahpDashboardToolbar);
@@ -124,7 +155,7 @@ public class AhpDashboardFragment extends Fragment implements AhpDashboardContra
             Intent intent = new Intent(getContext(), AhpStepperActivity.class);
             AhpMethod ahpMethod = new AhpMethod(mAhpDashboardCriterionAdapter.getCriterions(),mAhpDashboardAlternativeAdapter.getAlternatives());
             intent.putExtra("ahpBundle", (Serializable) ahpMethod );
-            startActivity(intent);
+            startActivityForResult(intent, 1);
         }else{
             Toast.makeText(getContext(), "Por favor, para continuar adicione 4 criterios e 4 alternativas", Toast.LENGTH_SHORT).show();
         }
@@ -195,4 +226,6 @@ public class AhpDashboardFragment extends Fragment implements AhpDashboardContra
         mAhpDashboardAddCriterionDialogBinding.setHandler(this);
         addCriterionDialog.setContentView(mAhpDashboardAddCriterionDialogBinding.getRoot());
     }
+
+
 }

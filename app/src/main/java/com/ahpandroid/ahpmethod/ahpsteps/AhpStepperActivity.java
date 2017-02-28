@@ -1,5 +1,6 @@
 package com.ahpandroid.ahpmethod.ahpsteps;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ public class AhpStepperActivity extends DotStepper {
     private AlertDialog alertDialog;
     AlertDialog.Builder alertDialogBuilder;
     private AhpMatrices ahpMatrices;
+    public static final int AHP_STEPPER_ACTION = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +101,10 @@ public class AhpStepperActivity extends DotStepper {
 
         float [][] preferenceMatrix = ahpMatrices.generateResultMatrix();
 
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("result",preferenceMatrix);
+        setResult(Activity.RESULT_OK,returnIntent);
+        finish();
 
         Toast.makeText(getApplicationContext(), "Completed Steps !", Toast.LENGTH_SHORT).show();
     }
