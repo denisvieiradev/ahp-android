@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.decisionsupport">
+    package="com.ahpandroid">
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_decision_support_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".SelectAssistMethod.SelectAssistMethodActivity">
+        <activity android:name="com.ahpandroid.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,11 +17,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".AhpMethod.AhpDashboard.AhpDashboardActivity">
+        <activity android:name="com.ahpandroid.selectassistmethod.SelectAssistMethodActivity" />
 
-        </activity>
+        <activity android:name="com.ahpandroid.ahpmethod.ahpdashboard.AhpDashboardActivity" />
 
-        <activity android:name=".AhpMethod.AhpSteps.AhpStepperActivity"/>
+        <activity android:name="com.ahpandroid.ahpmethod.ahpsteps.AhpStepperActivity"/>
 
     </application>
 

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="handler"
+            type="com.ahpandroid.ahpmethod.ahpdashboard.AhpDashboardFragment"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minWidth="250dp"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:paddingTop="20dp"
+            android:gravity="center"
+            android:text="ADD CRITERION"
+            android:layout_toRightOf="@+id/image"/>
+
+        <EditText
+            android:id="@+id/ahp_dashboard_criterion_value_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="50dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/dialogButtonOK"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:onClick="@{handler::closeAddCriterionDialog}"
+                />
+
+            <Button
+                android:id="@+id/dialogButtonCancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ok"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginTop="5dp"
+                android:onClick="@{handler::addCriterion}"
+                />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</layout>
