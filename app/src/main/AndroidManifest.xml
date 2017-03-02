@@ -21,7 +21,7 @@
 
         <activity android:name="com.ahpandroid.ahpmethod.ahpdashboard.AhpDashboardActivity" />
 
-        <activity android:name="com.ahpandroid.ahpmethod.AhpSteps.AhpStepperActivity"/>
+        <activity android:name="com.ahpandroid.ahpmethod.ahpsteps.AhpStepperActivity"/>
 
     </application>
 

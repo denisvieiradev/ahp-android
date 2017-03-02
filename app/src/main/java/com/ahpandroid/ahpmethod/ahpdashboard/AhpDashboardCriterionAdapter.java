@@ -20,32 +20,32 @@ import java.util.List;
 
 public class AhpDashboardCriterionAdapter extends RecyclerSwipeAdapter<AhpDashboardCriterionAdapter.ItemViewHolder> {
 
-    private List<Criterion> mCriterions;
+    private List<String> mCriterions;
     private Context mContext;
     private AhpDashboardContract.View mAhpDashboardContract;
     private AhpDashboardCriterionAdapter.ItemViewHolder mViewHolder;
 
-    private void setList(List<Criterion> list) {
+    private void setList(List<String> list) {
         mCriterions = list;
     }
 
-    public AhpDashboardCriterionAdapter(List<Criterion> criterions, Context context, AhpDashboardContract.View ahpDashboardContract) {
+    public AhpDashboardCriterionAdapter(List<String> criterions, Context context, AhpDashboardContract.View ahpDashboardContract) {
         this.mCriterions = criterions;
         this.mContext = context;
         this.mAhpDashboardContract = ahpDashboardContract;
     }
 
-    public List<Criterion> getCriterions(){
+    public List<String> getCriterions(){
         return mCriterions;
     }
 
-    public void replaceData(List<Criterion> criterions) {
+    public void replaceData(List<String> criterions) {
         setList(criterions);
         notifyDataSetChanged();
     }
 
     public void addItem(String criterionTitle){
-        Criterion criterion = new Criterion(GuidGenerator.generate(),criterionTitle);
+        String criterion = criterionTitle;
         mCriterions.add(criterion);
         notifyDataSetChanged();
         mAhpDashboardContract.checkListsContent();
@@ -82,7 +82,7 @@ public class AhpDashboardCriterionAdapter extends RecyclerSwipeAdapter<AhpDashbo
 
         mViewHolder = holder;
 
-        Criterion criterion = mCriterions.get(position);
+        String criterion = mCriterions.get(position);
 
         holder.mAhpDashboardCriterionItemBinding.setCriterion(criterion);
 

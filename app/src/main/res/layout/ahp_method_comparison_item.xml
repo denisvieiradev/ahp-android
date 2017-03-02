@@ -10,7 +10,7 @@
 
         <variable
             name="handler"
-            type="com.ahpandroid.ahpmethod.AhpSteps.AhpComparionItemAdapter"/>
+            type="com.ahpandroid.ahpmethod.ahpsteps.AhpComparionItemAdapter"/>
     </data>
 
     <LinearLayout
@@ -18,15 +18,36 @@
         android:layout_height="wrap_content"
         android:background="@color/md_white_1000"
         android:orientation="vertical"
-        android:layout_marginBottom="10dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        >
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAllCaps="true"
-            android:layout_margin="10dp"
-            android:text="@{comparisonItem.firstAlternativeName}"
-            tools:text="ALTERNATIVA 1"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAllCaps="true"
+                android:layout_margin="10dp"
+                android:text="@{comparisonItem.firstAlternativeName}"
+                tools:text="ALTERNATIVA 1"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:layout_weight="1"
+                android:gravity="right"
+                tools:text="ALTERNATIVA 2"
+                android:text="@{comparisonItem.secondAlternativename}"
+                android:layout_margin="10dp"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,14 +83,6 @@
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAllCaps="true"
-            android:gravity="right"
-            tools:text="ALTERNATIVA 2"
-            android:text="@{comparisonItem.secondAlternativename}"
-            android:layout_margin="10dp"/>
 
         <TextView
             android:id="@+id/ahp_method_comparison_item_definition_comparison_text_view"

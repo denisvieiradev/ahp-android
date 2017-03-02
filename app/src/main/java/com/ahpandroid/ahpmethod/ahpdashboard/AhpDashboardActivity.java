@@ -29,9 +29,7 @@ public class AhpDashboardActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (data != null && data.getExtras() != null)
-            for (String key : data.getExtras().keySet())
-                Toast.makeText(this, key + " : " + data.getExtras().get(key).toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"init on ActivityResult", Toast.LENGTH_SHORT).show();
 
         super.onActivityResult(requestCode, resultCode, data);
 

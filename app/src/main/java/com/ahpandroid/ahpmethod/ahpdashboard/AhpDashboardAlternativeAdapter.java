@@ -20,26 +20,26 @@ import java.util.List;
 
 public class AhpDashboardAlternativeAdapter extends RecyclerSwipeAdapter<AhpDashboardAlternativeAdapter.ItemViewHolder> {
 
-    private List<Alternative> mAlternatives;
+    private List<String> mAlternatives;
     private Context mContext;
     private AhpDashboardContract.View mAhpDashboardContract;
     private ItemViewHolder mViewHolder;
 
-    private void setList(List<Alternative> list) {
+    private void setList(List<String> list) {
         mAlternatives = list;
     }
 
-    public AhpDashboardAlternativeAdapter(List<Alternative> alternatives, Context context, AhpDashboardContract.View ahpDashboardContract) {
+    public AhpDashboardAlternativeAdapter(List<String> alternatives, Context context, AhpDashboardContract.View ahpDashboardContract) {
         this.mAlternatives = alternatives;
         this.mContext = context;
         this.mAhpDashboardContract = ahpDashboardContract;
     }
 
-    public List<Alternative> getAlternatives(){
+    public List<String> getAlternatives(){
         return mAlternatives;
     }
 
-    public void replaceData(List<Alternative> itemsMethod) {
+    public void replaceData(List<String> itemsMethod) {
         setList(itemsMethod);
         notifyDataSetChanged();
     }
@@ -50,7 +50,7 @@ public class AhpDashboardAlternativeAdapter extends RecyclerSwipeAdapter<AhpDash
     }
 
     public void addItem(String alternativeTitle){
-        Alternative alternative = new Alternative(GuidGenerator.generate(),alternativeTitle);
+        String alternative = alternativeTitle;
         mAlternatives.add(alternative);
         notifyDataSetChanged();
         mAhpDashboardContract.checkListsContent();
@@ -81,7 +81,7 @@ public class AhpDashboardAlternativeAdapter extends RecyclerSwipeAdapter<AhpDash
 
         mViewHolder = holder;
 
-        Alternative alternative = mAlternatives.get(position);
+        String alternative = mAlternatives.get(position);
         holder.mAhpDashboardAlternativeItemBinding.setAlternative(alternative);
 
         holder.mAhpDashboardAlternativeItemBinding.executePendingBindings();
