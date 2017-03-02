@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="handler"
+            type="com.ahpandroid.home.HomeFragment"/>
+    </data>
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/main_content"
         android:layout_width="match_parent"
@@ -81,11 +86,13 @@
                 android:paddingTop="20dp"
                 android:paddingBottom="20dp"
                 android:textColor="@color/md_white_1000"
+                android:onClick="@{handler::goToDashboard}"
                 />
 
         </LinearLayout>
 
         <android.support.design.widget.FloatingActionButton
+            android:id="@+id/home_app_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_dialog_info"
@@ -95,6 +102,7 @@
             app:layout_anchorGravity="bottom|right|end"
             app:fabSize="normal"
             app:backgroundTint="@color/md_yellow_900"
+            android:onClick="@{handler::showAppInfo}"
             />
 
     </android.support.design.widget.CoordinatorLayout>

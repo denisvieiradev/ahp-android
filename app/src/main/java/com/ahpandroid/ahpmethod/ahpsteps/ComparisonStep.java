@@ -111,6 +111,7 @@ public class ComparisonStep extends AbstractStep {
 
     @Override
     public void onStepVisible() {
+        System.out.println(name());
     }
 
     @Override

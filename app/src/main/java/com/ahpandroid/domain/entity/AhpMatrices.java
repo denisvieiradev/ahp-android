@@ -56,14 +56,14 @@ public class AhpMatrices implements Serializable {
         this.criterionFourMatrix = criterionFourMatrix;
     }
 
-    public void normalizeMatrices(){
+    private void normalizeMatrices(){
         this.criterionOneMatrix = normalize(criterionOneMatrix);
         this.criterionTwoMatrix = normalize(criterionTwoMatrix);
         this.criterionThreeMatrix = normalize(criterionThreeMatrix);
         this.criterionFourMatrix = normalize(criterionFourMatrix);
     }
 
-    private float[][] normalize(float[][] matrix){
+    public float[][] normalize(float[][] matrix){
 
         float[][] normalizedMatrix = null;
 

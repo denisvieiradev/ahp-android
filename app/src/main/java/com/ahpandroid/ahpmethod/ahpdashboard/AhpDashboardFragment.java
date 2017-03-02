@@ -21,9 +21,6 @@ import com.ahpandroid.databinding.AhpDashboardAddAlternativeDialogBinding;
 import com.ahpandroid.databinding.AhpDashboardAddCriterionDialogBinding;
 import com.ahpandroid.databinding.AhpDashboardFragBinding;
 import com.ahpandroid.domain.entity.AhpMethod;
-import com.ahpandroid.domain.entity.Alternative;
-import com.ahpandroid.domain.entity.Criterion;
-import com.ahpandroid.utils.GuidGenerator;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -78,9 +75,10 @@ public class AhpDashboardFragment extends Fragment implements AhpDashboardContra
         super.onActivityResult(requestCode,resultCode,data);
         if (resultCode == RESULT_OK) {
 
-            float [][] preferenceMatrix = (float[][]) data.getExtras().getSerializable("result");
+            float [][] preferenceMatrix = (float[][]) data.getExtras().getSerializable("preferenceMatrix");
+            float [] averagePriorityMatrix = (float[]) data.getExtras().getSerializable("averagePriorityMatrix");
 
-            mAhpResultsDialog.showPreferenceMatrix(preferenceMatrix,mAhpDashboardAlternativeAdapter.getAlternatives(),mAhpDashboardCriterionAdapter.getCriterions());
+            mAhpResultsDialog.showResults(averagePriorityMatrix,preferenceMatrix,mAhpDashboardAlternativeAdapter.getAlternatives(),mAhpDashboardCriterionAdapter.getCriterions());
 
             System.out.println("MATRIZ DE PREFERÊNCIA");
             imprimeMatriz(preferenceMatrix);

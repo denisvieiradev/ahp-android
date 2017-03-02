@@ -42,7 +42,7 @@ public class AhpStepperActivity extends DotStepper {
         for(int x = 0; x < 4; x++){
             addStep(createFragment(new ComparisonStep(alternatives, criterions.get(x),x)));
         }
-        addStep(createFragment(new ComparisonStep(criterions," Construir Matriz de prioridade",4)));
+        addStep(createFragment(new ComparisonStep(criterions,"Comparação dos seus critérios",4)));
 
         configureAlertDialogOnBackPressed();
 
@@ -101,8 +101,15 @@ public class AhpStepperActivity extends DotStepper {
 
         float [][] preferenceMatrix = ahpMatrices.generateResultMatrix();
 
+
+        float[][] criterionMatrix = (float[][]) getExtras().getSerializable("Tab_4");
+        float [][] priorityMatrix = ahpMatrices.normalize(criterionMatrix);
+        float [] averagePriorityMatrix = ahpMatrices.calculateAverageMatrix(priorityMatrix);
+
+
         Intent returnIntent = new Intent();
-        returnIntent.putExtra("result",preferenceMatrix);
+        returnIntent.putExtra("preferenceMatrix",preferenceMatrix);
+        returnIntent.putExtra("averagePriorityMatrix",averagePriorityMatrix);
         setResult(Activity.RESULT_OK,returnIntent);
         finish();
 

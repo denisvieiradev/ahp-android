@@ -1,9 +1,5 @@
 package com.ahpandroid.ahpmethod.ahpresultsdialog;
 
-import android.app.Dialog;
-import android.content.Context;
-import android.support.v4.app.Fragment;
-
 import com.ahpandroid.BasePresenter;
 import com.ahpandroid.BaseView;
 
@@ -19,7 +15,7 @@ public interface AhpResultsDialogContract {
         void ahpResultsDialogConfiguration();
         void show();
         void close(android.view.View view);
-        void showPreferenceMatrix(float[][] preferenceMatrix, List<String> alternatives, List<String> criterions);
+        void showResults(float[] averagePriorityMatrix, float[][] preferenceMatrix, List<String> alternatives, List<String> criterions);
     }
 
     interface Presenter extends BasePresenter {
