@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/apk/res/android"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -32,17 +31,28 @@
                 android:layout_height="22dp" />
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20dp">
             <TextView
+                android:id="@+id/ahp_dashboard_criterion_item_tittle"
                 android:tag="Hover"
                 tools:text="If winter comes"
                 android:text="@{criterion}"
-                android:layout_width="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ahp_dashboard_add_criterion_click_to_play"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@android:drawable/ic_media_play" />
+
+        </RelativeLayout>
     </com.daimajia.swipe.SwipeLayout>
 
 </layout>

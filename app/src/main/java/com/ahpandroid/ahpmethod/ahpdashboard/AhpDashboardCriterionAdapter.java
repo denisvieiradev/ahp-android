@@ -2,8 +2,11 @@ package com.ahpandroid.ahpmethod.ahpdashboard;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
@@ -13,6 +16,7 @@ import com.ahpandroid.domain.entity.Criterion;
 import com.ahpandroid.utils.GuidGenerator;
 
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by denisvieira on 19/02/17.
@@ -24,6 +28,7 @@ public class AhpDashboardCriterionAdapter extends RecyclerSwipeAdapter<AhpDashbo
     private Context mContext;
     private AhpDashboardContract.View mAhpDashboardContract;
     private AhpDashboardCriterionAdapter.ItemViewHolder mViewHolder;
+    private TextToSpeech tts;
 
     private void setList(List<String> list) {
         mCriterions = list;
@@ -88,6 +93,28 @@ public class AhpDashboardCriterionAdapter extends RecyclerSwipeAdapter<AhpDashbo
 
         holder.mAhpDashboardCriterionItemBinding.ahpDashboardRemoveCriterionLinearLayout.setOnClickListener(v -> {
             removeItem(position);
+        });
+
+        holder.mAhpDashboardCriterionItemBinding.ahpDashboardAddCriterionClickToPlay.setOnClickListener(view -> {
+            tts = new TextToSpeech(mContext, status -> {
+                if (status == TextToSpeech.SUCCESS) {
+
+                    int result = tts.setLanguage(Locale.getDefault());
+
+                    if (result == TextToSpeech.LANG_MISSING_DATA
+                            || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        Log.e("TTS", "This Language is not supported");
+                    } else {
+                        holder.mAhpDashboardCriterionItemBinding.ahpDashboardAddCriterionClickToPlay.setEnabled(true);
+                        String text = holder.mAhpDashboardCriterionItemBinding.ahpDashboardCriterionItemTittle.getText().toString();
+
+                        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+                    }
+
+                } else {
+                    Log.e("TTS", "Initilization Failed!");
+                }
+            });
         });
 
     }
