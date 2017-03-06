@@ -35,36 +35,155 @@
             android:text="Resultados"
             android:textAllCaps="true"
             android:textStyle="bold"
-            android:textSize="20dp"
+            android:textSize="25sp"
             android:gravity="center"
             android:paddingBottom="20dp"/>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Médias da Matriz de Prioridades"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/ahp_result_alt_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Alternativa 1"
+                android:textSize="20sp"
+                android:gravity="end"/>
+
+            <LinearLayout
+                android:layout_width="20dp"
+                android:layout_height="5dp"
+                android:background="@color/md_blue_grey_700"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"/>
+
+            <TextView
+                android:id="@+id/ahp_result_alt_0_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="20%"
+                android:textSize="20sp"
+                android:gravity="start"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/ahp_result_alt_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Alternativa 1"
+                android:textSize="20sp"
+                android:gravity="end"/>
+
+            <LinearLayout
+                android:layout_width="20dp"
+                android:layout_height="5dp"
+                android:background="@color/md_blue_grey_700"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"/>
+            <TextView
+                android:id="@+id/ahp_result_alt_1_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="20%"
+                android:textSize="20sp"
+                android:gravity="start"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/ahp_result_alt_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Alternativa 1"
+                android:textSize="20sp"
+                android:gravity="end"/>
+
+            <LinearLayout
+                android:layout_width="20dp"
+                android:layout_height="5dp"
+                android:background="@color/md_blue_grey_700"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"/>
+            <TextView
+                android:id="@+id/ahp_result_alt_2_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="20%"
+                android:textSize="20sp"
+                android:gravity="start"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp">
 
-            android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/ahp_result_alt_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Alternativa 1"
+                android:textSize="20sp"
+                android:gravity="end"/>
 
-        <include
-            android:id="@+id/ahp_results_priority_matrix_include"
-            layout="@layout/ahp_results_dialog_priority_matrix_table_include"
-            android:background="@android:color/transparent" />
+            <LinearLayout
+                android:layout_width="20dp"
+                android:layout_height="5dp"
+                android:background="@color/md_blue_grey_700"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"/>
 
-         <TextView
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Médias da Matriz de Preferências"
-             android:gravity="center"
-             android:layout_marginTop="10dp"
-             android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/ahp_result_alt_3_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="20%"
+                android:textSize="20sp"
+                android:gravity="start"/>
 
-        <include
-            android:id="@+id/ahp_results_preference_matrix_include"
-            layout="@layout/ahp_results_dialog_preference_matrix_table_include"
-            android:background="@android:color/transparent" />
+        </LinearLayout>
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Médias da Matriz de Prioridades"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:textStyle="bold"/>-->
+
+        <!--<include-->
+            <!--android:id="@+id/ahp_results_priority_matrix_include"-->
+            <!--layout="@layout/ahp_results_dialog_priority_matrix_table_include"-->
+            <!--android:background="@android:color/transparent" />-->
+
+         <!--<TextView-->
+             <!--android:layout_width="match_parent"-->
+             <!--android:layout_height="wrap_content"-->
+             <!--android:text="Médias da Matriz de Preferências"-->
+             <!--android:gravity="center"-->
+             <!--android:layout_marginTop="10dp"-->
+             <!--android:textStyle="bold"/>-->
+
+        <!--<include-->
+            <!--android:id="@+id/ahp_results_preference_matrix_include"-->
+            <!--layout="@layout/ahp_results_dialog_preference_matrix_table_include"-->
+            <!--android:background="@android:color/transparent" />-->
 
     </LinearLayout>
 </layout>

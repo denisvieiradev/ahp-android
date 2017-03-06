@@ -113,7 +113,7 @@ public class AhpStepperActivity extends DotStepper {
         setResult(Activity.RESULT_OK,returnIntent);
         finish();
 
-        Toast.makeText(getApplicationContext(), "Completed Steps !", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), "Completed Steps !", Toast.LENGTH_SHORT).show();
     }
 
     @Override
