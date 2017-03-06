@@ -1,9 +1,11 @@
 package com.ahpandroid.ahpmethod.ahpdashboard;
 
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +35,7 @@ import static android.app.Activity.RESULT_OK;
  */
 public class AhpDashboardFragment extends Fragment implements AhpDashboardContract.View{
 
+    private static final int FINISHED_STEPS = 10;
     private AhpDashboardContract.Presenter mPresenter;
     private AhpDashboardFragBinding mAhpDashboardFragBinding;
     private AhpDashboardAlternativeAdapter mAhpDashboardAlternativeAdapter;
@@ -42,6 +45,8 @@ public class AhpDashboardFragment extends Fragment implements AhpDashboardContra
     private AhpDashboardAddCriterionDialogBinding mAhpDashboardAddCriterionDialogBinding;
     private AhpDashboardAddAlternativeDialogBinding mAhpDashboardAddAlternativeDialogBinding;
     private AhpResultsDialog mAhpResultsDialog;
+    protected static final int RESULT_SPEECH_ALTERNATIVE = 2;
+    protected static final int RESULT_SPEECH_CRITERION   = 3;
 
 
     public AhpDashboardFragment() {}
@@ -56,12 +61,12 @@ public class AhpDashboardFragment extends Fragment implements AhpDashboardContra
         setRetainInstance(true);
         List<String> criterionList = new ArrayList<>();
         List<String> alternativeList= new ArrayList<>();
-        for (int x=0; x<4;x++){
-            String criterion = "Criterion "+x;
-            String alternative = "Alternative "+x;
-            criterionList.add(criterion);
-            alternativeList.add(alternative);
-        }
+//        for (int x=0; x<4;x++){
+//            String criterion = "Criterion "+x;
+//            String alternative = "Alternative "+x;
+//            criterionList.add(criterion);
+//            alternativeList.add(alternative);
+//        }
 
         mAhpDashboardAlternativeAdapter = new AhpDashboardAlternativeAdapter( new ArrayList<String>(0),getContext(),this);
         mAhpDashboardCriterionAdapter = new AhpDashboardCriterionAdapter( new ArrayList<String>(0),getContext(),this);
@@ -73,15 +78,43 @@ public class AhpDashboardFragment extends Fragment implements AhpDashboardContra
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode,resultCode,data);
-        if (resultCode == RESULT_OK) {
 
-            float [][] preferenceMatrix = (float[][]) data.getExtras().getSerializable("preferenceMatrix");
-            float [] averagePriorityMatrix = (float[]) data.getExtras().getSerializable("averagePriorityMatrix");
+        switch (requestCode) {
+            case RESULT_SPEECH_ALTERNATIVE: {
+                if (resultCode == RESULT_OK && null != data) {
 
-            mAhpResultsDialog.showResults(averagePriorityMatrix,preferenceMatrix,mAhpDashboardAlternativeAdapter.getAlternatives(),mAhpDashboardCriterionAdapter.getCriterions());
+                    ArrayList<String> text = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 
-            System.out.println("MATRIZ DE PREFERÊNCIA");
-            imprimeMatriz(preferenceMatrix);
+                    mAhpDashboardAddAlternativeDialogBinding.ahpDashboardAlternativeValueEditText.setText(text.get(0));
+                }
+                break;
+            }
+
+            case RESULT_SPEECH_CRITERION: {
+                if (resultCode == RESULT_OK && null != data) {
+
+                    ArrayList<String> text = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+
+                    mAhpDashboardAddCriterionDialogBinding.ahpDashboardCriterionValueEditText.setText(text.get(0));
+                }
+                break;
+            }
+
+            case FINISHED_STEPS: {
+                if (resultCode == RESULT_OK) {
+
+                    float [][] preferenceMatrix = (float[][]) data.getExtras().getSerializable("preferenceMatrix");
+                    float [] averagePriorityMatrix = (float[]) data.getExtras().getSerializable("averagePriorityMatrix");
+
+                    mAhpResultsDialog.showResults(averagePriorityMatrix,preferenceMatrix,mAhpDashboardAlternativeAdapter.getAlternatives(),mAhpDashboardCriterionAdapter.getCriterions());
+
+                    System.out.println("MATRIZ DE PREFERÊNCIA");
+                    imprimeMatriz(preferenceMatrix);
+                }
+                break;
+            }
         }
     }
 
@@ -153,7 +186,7 @@ public class AhpDashboardFragment extends Fragment implements AhpDashboardContra
             Intent intent = new Intent(getContext(), AhpStepperActivity.class);
             AhpMethod ahpMethod = new AhpMethod(mAhpDashboardCriterionAdapter.getCriterions(),mAhpDashboardAlternativeAdapter.getAlternatives());
             intent.putExtra("ahpBundle", (Serializable) ahpMethod );
-            startActivityForResult(intent, 1);
+            startActivityForResult(intent, FINISHED_STEPS);
         }else{
             Toast.makeText(getContext(), "Por favor, para continuar adicione 4 criterios e 4 alternativas", Toast.LENGTH_SHORT).show();
         }
@@ -223,6 +256,40 @@ public class AhpDashboardFragment extends Fragment implements AhpDashboardContra
         mAhpDashboardAddCriterionDialogBinding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.ahp_dashboard_add_criterion_dialog, null, false);
         mAhpDashboardAddCriterionDialogBinding.setHandler(this);
         addCriterionDialog.setContentView(mAhpDashboardAddCriterionDialogBinding.getRoot());
+    }
+
+    public void pressToSpeakAlternative(View view){
+        Intent intent = new Intent(
+                RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
+
+        try {
+            startActivityForResult(intent, RESULT_SPEECH_ALTERNATIVE);
+            mAhpDashboardAddAlternativeDialogBinding.ahpDashboardAlternativeValueEditText.setText("");
+        } catch (ActivityNotFoundException a) {
+            Toast t = Toast.makeText(getContext(),
+                    "Opps! Your device doesn't support Speech to Text",
+                    Toast.LENGTH_SHORT);
+            t.show();
+        }
+    }
+
+    public void pressToSpeakCriterion(View view){
+        Intent intent = new Intent(
+                RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
+
+        try {
+            startActivityForResult(intent, RESULT_SPEECH_CRITERION);
+            mAhpDashboardAddCriterionDialogBinding.ahpDashboardCriterionValueEditText.setText("");
+        } catch (ActivityNotFoundException a) {
+            Toast t = Toast.makeText(getContext(),
+                    "Opps! Your device doesn't support Speech to Text",
+                    Toast.LENGTH_SHORT);
+            t.show();
+        }
     }
 
 

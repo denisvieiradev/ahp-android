@@ -1,5 +1,5 @@
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -23,11 +23,28 @@
             android:gravity="center"
             android:text="ADD ALTERNATIVE"/>
 
-        <EditText
-            android:id="@+id/ahp_dashboard_alternative_value_edit_text"
+        <RelativeLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="50dp"/>
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/ahp_dashboard_alternative_value_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:background="@color/cardview_dark_background"
+                android:layout_margin="50dp"/>
+
+            <ImageView
+                android:id="@+id/ahp_dashboard_add_alternative_click_to_speak"
+                android:src="@android:drawable/ic_btn_speak_now"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:onClick="@{handler::pressToSpeakAlternative}"/>
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
